@@ -1,13 +1,13 @@
 // use an integer for version numbers
-version = 1
+version = 2
 
 
 cloudstream {
     language = "id"
     // All of these properties are optional, you can safely remove them
 
-    // description = "Lorem Ipsum"
-    // authors = listOf("Cloudburst")
+//     description = "Lorem Ipsum"
+     authors = listOf("Hexated")
 
     /**
      * Status int as the following:
@@ -16,7 +16,7 @@ cloudstream {
      * 2: Slow
      * 3: Beta only
      * */
-    status = 1 // will be 3 if unspecified
+    status = 0 // will be 3 if unspecified
     tvTypes = listOf(
         "AnimeMovie",
         "Anime",
