@@ -1,6 +1,5 @@
 package com.lagradost
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
@@ -8,7 +7,6 @@ import com.lagradost.cloudstream3.mvvm.safeApiCall
 import com.lagradost.cloudstream3.utils.*
 import org.jsoup.nodes.Element
 import java.net.URLDecoder
-import java.util.ArrayList
 
 class PhimmoichillProvider : MainAPI() {
     override var mainUrl = "https://phimmoichill.net"
@@ -41,7 +39,14 @@ class PhimmoichillProvider : MainAPI() {
         val home = document.select("li.item").mapNotNull {
             it.toSearchResult()
         }
-        return newHomePageResponse(request.name, home)
+        return newHomePageResponse(
+            list = HomePageList(
+                name = request.name,
+                list = home,
+                isHorizontalImages = true
+            ),
+            hasNext = true
+        )
     }
 
     private fun decode(input: String): String? = URLDecoder.decode(input, "utf-8")
@@ -97,7 +102,9 @@ class PhimmoichillProvider : MainAPI() {
             document.select("ul.entry-meta.block-film li:nth-child(7) span").text().toRatingInt()
         val actors = document.select("ul.entry-meta.block-film li:last-child a").map { it.text() }
         val recommendations = document.select("ul#list-film-realted li.item").map {
-            it.toSearchResult()
+            it.toSearchResult().apply {
+                this.posterUrl = decode(it.selectFirst("img")!!.attr("data-src").substringAfter("url="))
+            }
         }
 
         return if (tvType == TvType.TvSeries) {
@@ -145,81 +152,41 @@ class PhimmoichillProvider : MainAPI() {
     ): Boolean {
         val document = app.get(data).document
 
-        val key = document.select("div#content script").mapNotNull { script ->
-            if (script.data().contains("filmInfo.episodeID =")) {
-                val id = script.data().substringAfter("filmInfo.episodeID = parseInt('")
-                    .substringBefore("');")
+        val key = document.select("div#content script")
+            .find { it.data().contains("filmInfo.episodeID =") }?.data()?.let { script ->
+                val id = script.substringAfter("filmInfo.episodeID = parseInt('")
                 app.post(
                     // Not mainUrl
                     url = "https://phimmoichills.net/pmplayer.php",
-                    data = mapOf("qcao" to id),
+                    data = mapOf("qcao" to id, "sv" to "0"),
                     referer = data,
                     headers = mapOf(
                         "X-Requested-With" to "XMLHttpRequest",
                         "Content-Type" to "application/x-www-form-urlencoded; charset=UTF-8"
                     )
-                ).text.also { println("HERERERR $it") }.substringAfterLast("iniPlayers(\"").substringBefore("\",")
-            } else {
-                null
+                ).text.substringAfterLast("iniPlayers(\"")
+                    .substringBefore("\",")
             }
-        }.first()
 
         listOf(
-            Pair("https://so-trym.topphimmoi.org/hlspm/$key", "PMFAST"),
-            Pair("https://dash.megacdn.xyz/hlspm/$key", "PMHLS"),
+            Pair("https://so-trym.topphimmoi.org/raw/$key/index.m3u8", "PMFAST"),
+            Pair("https://dash.megacdn.xyz/raw/$key/index.m3u8", "PMHLS"),
             Pair("https://dash.megacdn.xyz/dast/$key/index.m3u8", "PMBK")
         ).apmap { (link, source) ->
             safeApiCall {
-                if (source == "PMBK") {
-                    callback.invoke(
-                        ExtractorLink(
-                            source,
-                            source,
-                            link,
-                            referer = "$mainUrl/",
-                            quality = Qualities.P1080.value,
-                            isM3u8 = true
-                        )
+                callback.invoke(
+                    ExtractorLink(
+                        source,
+                        source,
+                        link,
+                        referer = "$mainUrl/",
+                        quality = Qualities.P1080.value,
+                        isM3u8 = true,
                     )
-                } else {
-                    val playList = app.get(link, referer = "$mainUrl/")
-                        .parsedSafe<ResponseM3u>()?.main?.segments?.map { segment ->
-                            PlayListItem(
-                                segment.link,
-                                (segment.du.toFloat() * 1_000_000).toLong()
-                            )
-                        }
-
-                    callback.invoke(
-                        ExtractorLinkPlayList(
-                            source,
-                            source,
-                            playList ?: return@safeApiCall,
-                            referer = "$mainUrl/",
-                            quality = Qualities.P1080.value,
-                            headers = mapOf(
-//                                "If-None-Match" to "*",
-                                "Origin" to mainUrl,
-                            )
-                        )
-                    )
-                }
+                )
             }
         }
         return true
     }
-
-    data class Segment(
-        @JsonProperty("du") val du: String,
-        @JsonProperty("link") val link: String,
-    )
-
-    data class DataM3u(
-        @JsonProperty("segments") val segments: List<Segment>?,
-    )
-
-    data class ResponseM3u(
-        @JsonProperty("2048p") val main: DataM3u?,
-    )
 
 }
