@@ -55,7 +55,11 @@ class WebFlixProvider(override var lang: String, override var mainUrl: String, o
         val posters: List<Entry>
     )
 
-    private data class HomeResponse(val genres: List<HomeReponseGenre>, val channels: List<Entry>, val slides: List<Entry>) {
+    private data class HomeResponse(
+        val genres: List<HomeReponseGenre> = emptyList(),
+        val channels: List<Entry> = emptyList(),
+        // val slides: List<Entry> = emptyList()
+    ) {
         fun getHomePageLists(provider: WebFlixProvider): List<HomePageList> {
             val lists = mutableListOf<HomePageList>()
             if (channels.isNotEmpty()) {
@@ -64,7 +68,7 @@ class WebFlixProvider(override var lang: String, override var mainUrl: String, o
                 }
                 lists.add(channels.toHomePageList("Channels", provider))
             }
-            if (slides.isNotEmpty()) lists.add(slides.toHomePageList("Slides", provider))
+            //if (slides.isNotEmpty()) lists.add(slides.toHomePageList("Slides", provider))
             lists.addAll(genres.map { it.toHomePageList(provider) })
             return lists
         }
@@ -157,7 +161,7 @@ class WebFlixProvider(override var lang: String, override var mainUrl: String, o
                 }
                 TvType.TvSeries -> provider.newTvSeriesSearchResponse(
                     title,
-                    "${provider.mainUrl}/api/series/by/$id/${provider.magicPath}",
+                    "${provider.mainUrl}/api/movie/by/$id/${provider.magicPath}",
                     TvType.TvSeries
                 ) {
                     posterUrl = image
