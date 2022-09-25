@@ -21,5 +21,5 @@ cloudstream {
         "Live"
     )
 
-    iconUrl = "https://raw.githubusercontent.com/recloudstream/cloudstream-extensions-multilinugal/master/WebFlix/icon.png"
+    iconUrl = "https://raw.githubusercontent.com/recloudstream/cloudstream-extensions-multilingual/master/WebFlix/icon.png"
 }
