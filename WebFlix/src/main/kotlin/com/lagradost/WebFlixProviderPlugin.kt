@@ -15,5 +15,6 @@ class WebFlixProviderPlugin: Plugin() {
         registerMainAPI(WebFlixProvider("fr", "http://www.vanflix.cm", "Vanflix", setOf(TvType.Movie, TvType.TvSeries, TvType.Live)))
         registerMainAPI(WebFlixProvider("pt-pt", "https://www.brflix.xyz", "BrFlix", setOf(TvType.Movie, TvType.TvSeries, TvType.Live)))
         registerMainAPI(WebFlixProvider("ar", "https://ifilm.live", "ifilm.live", setOf(TvType.Movie, TvType.TvSeries)))
+        registerMainAPI(WebFlixProvider("en", "https://karmadarna.com", "KarMaDarNa", setOf(TvType.NSFW)))
     }
 }
