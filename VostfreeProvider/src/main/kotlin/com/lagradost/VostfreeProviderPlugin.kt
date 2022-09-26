@@ -6,10 +6,13 @@ import com.lagradost.cloudstream3.plugins.Plugin
 import android.content.Context
 
 @CloudstreamPlugin
-class FrenchStreamProviderPlugin: Plugin() {
+class VostfreePlugin: Plugin() {
     override fun load(context: Context) {
         // All providers should be added in this manner. Please don't edit the providers list directly.
-        registerMainAPI(FrenchStreamProvider())
-		registerExtractorAPI(VidoExtractor())
+        registerMainAPI(VostfreeProvider())
+		registerExtractorAPI(VudeoExtractor())
+		registerExtractorAPI(SibnetExtractor())
+		registerExtractorAPI(MytvExtractor())
+		
     }
 }

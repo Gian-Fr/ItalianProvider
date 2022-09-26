@@ -6,8 +6,8 @@ cloudstream {
     language = "fr"
     // All of these properties are optional, you can safely remove them
 
-     description = "FRENCH STREAM en plus d'être un site efficace et plaisant dispose d'un contenu visuel diversifié"
-     authors = listOf("Sarlay", "Eddy976")
+    description = "WIFLIX, le site grâce auquel vous allez pouvoir regarder vos films et séries préférées"
+    authors = listOf("Eddy")
 
     /**
      * Status int as the following:
@@ -19,8 +19,8 @@ cloudstream {
     status = 1 // will be 3 if unspecified
     tvTypes = listOf(
         "TvSeries",
-        "Movie",
+		"Movie",
     )
 
-    iconUrl = "https://www.google.com/s2/favicons?domain=french-stream.ac&sz=%size%"
+    iconUrl = "https://www.google.com/s2/favicons?domain=wiflix.zone&sz=%size%"
 }
