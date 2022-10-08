@@ -18,9 +18,8 @@ cloudstream {
      * */
     status = 1 // will be 3 if unspecified
     tvTypes = listOf(
-        "TvSeries",
-        "Movie",
+        "Live",
     )
 
-    iconUrl = "https://www.google.com/s2/favicons?domain=filmpertutti.photo&sz=%size%"
+    iconUrl = "https://www.google.com/s2/favicons?domain=starlive.xyz&sz=%size%"
 }

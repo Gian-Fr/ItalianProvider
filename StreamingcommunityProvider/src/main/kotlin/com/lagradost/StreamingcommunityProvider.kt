@@ -2,10 +2,10 @@ package com.lagradost
 
 import android.text.Html
 import com.fasterxml.jackson.annotation.*
-import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.utils.AppUtils.parseJson
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 import com.lagradost.cloudstream3.utils.*
+import com.lagradost.cloudstream3.*
 import org.json.JSONObject
 import java.net.URI
 import java.security.MessageDigest
@@ -126,10 +126,10 @@ data class TrailerElement(
 )
 
 
-class StreamingcommunityProvider : MainAPI() {
+class StreamingcommunityProvider: MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://streamingcommunity.tech"
-    override var name = "Streamingcommunity"
+    override var mainUrl = "https://streamingcommunity.golf"
+    override var name = "StreamingCommunity"
     override val hasMainPage = true
     override val hasChromecastSupport = true
     override val supportedTypes = setOf(
@@ -183,7 +183,7 @@ class StreamingcommunityProvider : MainAPI() {
                 val lista = mutableListOf<MovieSearchResponse>()
                 val videoData = parseJson<List<VideoElement>>(films)
 
-                videoData.subList(0, 12).map { searchr ->
+                videoData.subList(0, 12).apmap { searchr ->
                     val id = searchr.id
                     val name = searchr.slug
                     val img = searchr.images[0].url
@@ -229,7 +229,7 @@ class StreamingcommunityProvider : MainAPI() {
             document.selectFirst("the-search-page")!!.attr("records-json").replace("&quot;", """"""")
 
         val searchresults = parseJson<List<VideoElement>>(films)
-        return searchresults.map { result ->
+        return searchresults.apmap { result ->
             val id = result.id
             val name = result.slug
             val img = result.images[0].url
@@ -296,7 +296,7 @@ class StreamingcommunityProvider : MainAPI() {
         val correlatidata = parseJson<List<VideoElement>>(correlatijs)
         val number : Int = if (correlatidata.size<=15) {correlatidata.size} else correlatidata.size-15
 
-        correlatidata.take(number).map { searchr ->
+        correlatidata.take(number).apmap { searchr ->
             val idcorr = searchr.id
             val name = searchr.slug
             val img = searchr.images[0].url
@@ -425,13 +425,18 @@ class StreamingcommunityProvider : MainAPI() {
         val scwsid = jsn.getString("scws_id")
         val expire = (System.currentTimeMillis() / 1000 + 172800).toString()
 
-        val uno = "$expire$ip Yc8U6r8KjAKAepEA".toByteArray()
-        val due = MessageDigest.getInstance("MD5").digest(uno)
-        val tre = base64Encode(due)
-        val token = tre.replace("=", "").replace("+", "-").replace("/", "_")
+        val token0 = "$expire$ip Yc8U6r8KjAKAepEA".toByteArray()
+        val token1 = MessageDigest.getInstance("MD5").digest(token0)
+        val token2 = base64Encode(token1)
+        val token = token2.replace("=", "").replace("+", "-").replace("/", "_")
 
+        val link = "https://scws.work/master/$scwsid?token=$token&expires=$expire&n=1"
+        Regex("URI=\".*\"").findAll(app.get("https://scws.work/master/$scwsid?token=$token&expires=$expire&n=1").text).toList().filter{it.value.contains("auto-forced").not()}.map{
+            val link = app.get(it.value.substringAfter("\"").dropLast(1)).text.lines().filter{it.contains("http")}[0]
+            val lang = it.value.substringAfter("rendition=").substringBefore("&")
+            SubtitleFile(lang, link)
+        }.forEach(subtitleCallback)
 
-        val link = "https://scws.xyz/master/$scwsid?token=$token&expires=$expire&n=1&n=1"
         getM3u8Qualities(link, data, URI(link).host).forEach(callback)
         return true
     }
