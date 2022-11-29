@@ -29,15 +29,15 @@ class EurostreamingProvider : MainAPI() {
         val url = request.data + page
 
         val soup = app.get(url, interceptor = interceptor).document
-        val home = soup.select("div.post-thumb").map {
+        val home = soup.select("div.post-thumb").mapNotNull {
             it.toSearchResult()
         }
         return newHomePageResponse(arrayListOf(HomePageList(request.name, home)), hasNext = true)
     }
 
-    private fun Element.toSearchResult(): SearchResponse {
-        val title = this.selectFirst("a")?.attr("title")
-        val link = this.selectFirst("a")?.attr("href")
+    private fun Element.toSearchResult(): SearchResponse? {
+        val title = this.selectFirst("a")?.attr("title") ?: return null
+        val link = this.selectFirst("a")?.attr("href") ?: return null
         val image = fixUrlNull(mainUrl + this.selectFirst("img")?.attr("src")?.trim())
 
         return newTvSeriesSearchResponse(title, link, TvType.TvSeries){
