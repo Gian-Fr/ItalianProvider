@@ -128,7 +128,7 @@ data class TrailerElement(
 
 class StreamingcommunityProvider: MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://streamingcommunity.golf"
+    override var mainUrl = "https://streamingcommunity.cheap"
     override var name = "StreamingCommunity"
     override val hasMainPage = true
     override val hasChromecastSupport = true
@@ -170,9 +170,9 @@ class StreamingcommunityProvider: MainAPI() {
         }
     }
 
-    companion object {
-        val posterMap = hashMapOf<String, String>()
-    }
+//    companion object {
+//        val posterMap = hashMapOf<String, String>()
+//    }
 
     override suspend fun getMainPage(page: Int, request : MainPageRequest): HomePageResponse {
         val items = ArrayList<HomePageList>()
@@ -191,7 +191,7 @@ class StreamingcommunityProvider: MainAPI() {
                     val ip = translateip(searchr.images[0].proxyID.toInt())
                     val posterurl = "https://$ip/images/$number/$img"
                     val videourl = "$mainUrl/titles/$id-$name"
-                    posterMap[videourl] = posterurl
+                    //posterMap[videourl] = posterurl
                     val data = app.post("$mainUrl/api/titles/preview/$id", referer = mainUrl).text
                     val datajs = parseJson<Moviedata>(data)
                     val type: TvType = if (datajs.type == "movie") {
@@ -239,7 +239,7 @@ class StreamingcommunityProvider: MainAPI() {
             val datajs = parseJson<Moviedata>(data)
             val posterurl = "https://$ip/images/$number/$img"
             val videourl = "$mainUrl/titles/$id-$name"
-            posterMap[videourl] = posterurl
+            //posterMap[videourl] = posterurl
             if (datajs.type == "movie") {
                 val type = TvType.Movie
                 MovieSearchResponse(
@@ -271,7 +271,8 @@ class StreamingcommunityProvider: MainAPI() {
     override suspend fun load(url: String): LoadResponse {
 
         val document = app.get(url).document
-        val poster = posterMap[url]
+        val poster = Regex("url\\('(.*)'").find(document.selectFirst("div.title-wrap")?.attributes()
+            ?.get("style") ?: "")?.groupValues?.last() //posterMap[url]
         val id = url.substringBefore("-").filter { it.isDigit() }
         val data = app.post("$mainUrl/api/titles/preview/$id", referer = mainUrl).text
 
@@ -307,7 +308,7 @@ class StreamingcommunityProvider: MainAPI() {
             val videourl = "$mainUrl/titles/$idcorr-$name"
             val posterurl = "https://$ip/images/$number/$img"
 
-            posterMap[videourl] = posterurl
+            //posterMap[videourl] = posterurl
             val typecorr: TvType = if (datajscorrel.type == "movie") {
                 TvType.Movie
             } else {
@@ -431,13 +432,17 @@ class StreamingcommunityProvider: MainAPI() {
         val token = token2.replace("=", "").replace("+", "-").replace("/", "_")
 
         val link = "https://scws.work/master/$scwsid?token=$token&expires=$expire&n=1"
-        Regex("URI=\".*\"").findAll(app.get("https://scws.work/master/$scwsid?token=$token&expires=$expire&n=1").text).toList().filter{it.value.contains("auto-forced").not()}.map{
-            val link = app.get(it.value.substringAfter("\"").dropLast(1)).text.lines().filter{it.contains("http")}[0]
-            val lang = it.value.substringAfter("rendition=").substringBefore("&")
-            SubtitleFile(lang, link)
-        }.forEach(subtitleCallback)
-
-        getM3u8Qualities(link, data, URI(link).host).forEach(callback)
+        
+        callback.invoke(
+            ExtractorLink(
+                name,
+                name,
+                link,
+                isM3u8 = true,
+                referer = mainUrl,
+                quality = Qualities.Unknown.value
+            )
+        )
         return true
     }
 }
