@@ -20,7 +20,7 @@ class SkillShareProvider : MainAPI() { // all providers must be an instance of M
     private val apiUrl = "https://www.skillshare.com/api/graphql"
     private val bypassApiUrl = "https://skillshare-api.heckernohecking.repl.co"
 
-    override val supportedTypes = setOf(TvType.TvSeries)
+    override val supportedTypes = setOf(TvType.Others)
     override val hasChromecastSupport = true
     override var lang = "en"
     override val hasMainPage = true
@@ -141,7 +141,7 @@ class SkillShareProvider : MainAPI() { // all providers must be an instance of M
     }
 
 
-    override suspend fun load(url: String): LoadResponse {
+    override suspend fun load(url: String): LoadResponse? {
         val data = parseJson<Data>(url)
         val document = app.get(bypassApiUrl + "/${data.courseId}/0")
             .parsedSafe<BypassApiData>() ?: throw ErrorLoadingException("Invalid Json Response")
@@ -151,7 +151,7 @@ class SkillShareProvider : MainAPI() { // all providers must be an instance of M
             Episode(episode.url ?: "", episode.title, 1, index)
         }
 
-        return newTvSeriesLoadResponse(title, data.courseId, TvType.TvSeries, episodeList) {
+        return newTvSeriesLoadResponse(title, data.courseId ?: return null, TvType.TvSeries, episodeList) {
             addPoster(poster)
         }
     }
