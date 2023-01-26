@@ -2,7 +2,7 @@ package com.lagradost
 
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.utils.*
-
+import org.jsoup.nodes.Document
 
 class CalcioStreamingProvider : MainAPI() {
     override var lang = "it"
@@ -58,12 +58,21 @@ class CalcioStreamingProvider : MainAPI() {
             poster,
             plot = Matchstart
         )
-
-
     }
 
+    private fun matchFound(document: Document) : Boolean {
+        return Regex(""""((.|\n)*?).";""").containsMatchIn(
+            getAndUnpack(
+                document.toString()
+            ))
+    }
 
-
+    private fun getUrl(document: Document):String{
+        return Regex(""""((.|\n)*?).";""").find(
+            getAndUnpack(
+                document.toString()
+            ))!!.value.replace("""src="""", "").replace(""""""", "").replace(";", "")
+    }
 
     private suspend fun extractVideoLinks(
         url: String,
@@ -71,25 +80,28 @@ class CalcioStreamingProvider : MainAPI() {
     ) {
         val document = app.get(url).document
         document.select("button.btn").forEach { button ->
-            val link1 = button.attr("data-link")
-            val doc2 = app.get(link1).document
-            val truelink = doc2.selectFirst("iframe")!!.attr("src")
-            val newpage = app.get(truelink, referer = link1).document
-            val streamurl = Regex(""""((.|\n)*?).";""").find(
-                getAndUnpack(
-                    newpage.select("script")[6].childNode(0).toString()
-                ))!!.value.replace("""src="""", "").replace(""""""", "").replace(";", "")
-
-            callback(
-                ExtractorLink(
-                    this.name,
-                    button.text(),
-                    streamurl,
-                    truelink,
-                    quality = 0,
-                    true
-                )
-            )
+            var link = button.attr("data-link")
+            var oldLink = link
+            var videoNotFound = true
+            while (videoNotFound) {
+                val doc = app.get(link).document
+                link = doc.selectFirst("iframe")?.attr("src") ?: break
+                val newpage = app.get(fixUrl(link), referer = oldLink).document
+                oldLink = link
+                if (newpage.select("script").size >= 6 && matchFound(newpage)){
+                    videoNotFound = false
+                    callback(
+                        ExtractorLink(
+                            this.name,
+                            button.text(),
+                            getUrl(newpage),
+                            fixUrl(link),
+                            quality = 0,
+                            true
+                        )
+                    )
+                }
+            }
         }
     }
 
