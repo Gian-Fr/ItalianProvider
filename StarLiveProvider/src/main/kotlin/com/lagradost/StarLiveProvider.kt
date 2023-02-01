@@ -36,7 +36,7 @@ class StarLiveProvider : MainAPI() {
             .map { LinkParser(
                 fixUrl(it.selectFirst("a")?.attr("href")?:""),
                 it.attr("class"),
-                it.selectFirst("span")?.text()?:""
+                it.selectFirst("b")?.text()?:""
             ) }
         val dayMatch = this.previousElementSiblings().toList().firstOrNull() { it.`is`("h3") }?.text()
 
@@ -107,7 +107,7 @@ class StarLiveProvider : MainAPI() {
             ExtractorLink(
                 source = this.name,
                 name = data.name + " - " + data.language,
-                url = streamUrl,
+                url = fixUrl(streamUrl),
                 quality = Qualities.Unknown.value,
                 referer = referrerLink,
                 isM3u8 = true
@@ -123,7 +123,7 @@ class StarLiveProvider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        tryParseJson<MatchParser>(data)?.linkData?.map { link ->
+        tryParseJson<MatchParser>(data)?.linkData?.apmap { link ->
             extractVideoLinks(link, callback)
         }
 
