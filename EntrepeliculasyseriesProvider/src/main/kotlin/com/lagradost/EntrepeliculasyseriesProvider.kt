@@ -5,7 +5,7 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
 class EntrepeliculasyseriesProvider : MainAPI() {
-    override var mainUrl = "https://entrepeliculasyseries.nu"
+    override var mainUrl = "https://entrepeliculasyseries.nz"
     override var name = "EntrePeliculasySeries"
     override var lang = "es"
     override val hasMainPage = true
