@@ -96,8 +96,8 @@ class PinoyMoviesHub : MainAPI() {
                     }?.let { divEpSeason ->
                         if (divEpSeason.isNotEmpty()) {
                             if (divEpSeason.size > 1) {
-                                epCount = divEpSeason[0]
-                                seasCount = divEpSeason[1]
+                                epCount = divEpSeason[1]
+                                seasCount = divEpSeason[0]
                             } else {
                                 epCount = divEpSeason[0]
                             }
