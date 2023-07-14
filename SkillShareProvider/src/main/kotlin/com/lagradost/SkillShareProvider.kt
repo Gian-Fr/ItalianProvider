@@ -169,7 +169,7 @@ class SkillShareProvider : MainAPI() { // all providers must be an instance of M
                 name,
                 name,
                 data,
-                isM3u8 = false,
+                isM3u8 = true,
                 referer = "$mainUrl/",
                 quality = Qualities.Unknown.value
             )
