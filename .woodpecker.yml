@@ -1,0 +1,28 @@
+pipeline:
+  clone-builds:
+    image: woodpeckerci/plugin-git
+    secrets: [ codeberg_token ]
+    commands:
+      git clone -b builds https://$CODEBERG_TOKEN@codeberg.org/$CI_REPO.git $CI_WORKSPACE/../builds
+
+  clean:
+    image: alpine:3
+    commands:
+      - rm $CI_WORKSPACE/../builds/*.cs3 || true
+
+  build:
+    image: androidsdk/android-31
+    commands:
+      - bash gradlew make makePluginsJson
+      - cp **/build/*.cs3 $CI_WORKSPACE/../builds
+      - cp build/plugins.json $CI_WORKSPACE/../builds
+
+  push:
+    image: woodpeckerci/plugin-git
+    commands:
+      - cd $CI_WORKSPACE/../builds
+      - git config --local user.email $CI_COMMIT_AUTHOR_EMAIL
+      - git config --local user.name $CI_COMMIT_AUTHOR
+      - git add .
+      - git commit --amend -m "Build $CI_COMMIT_SHA" || exit 0
+      - git push --force
