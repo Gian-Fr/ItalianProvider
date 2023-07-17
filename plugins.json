@@ -2,7 +2,7 @@
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=altadefinizione.tienda&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 12241,
         "status": 1,
         "language": "it",
@@ -14,14 +14,14 @@
         ],
         "version": 3,
         "internalName": "AltadefinizioneProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AltadefinizioneProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/AltadefinizioneProvider.cs3",
         "name": "AltadefinizioneProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=animefenix.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 17633,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 17662,
         "status": 1,
         "language": "es",
         "authors": [
@@ -34,14 +34,14 @@
         ],
         "version": 1,
         "internalName": "AnimefenixProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AnimefenixProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/AnimefenixProvider.cs3",
         "name": "AnimefenixProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=animeflv.io&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 16987,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 16989,
         "status": 1,
         "language": "es",
         "authors": [
@@ -54,14 +54,14 @@
         ],
         "version": 1,
         "internalName": "AnimeflvIOProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AnimeflvIOProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/AnimeflvIOProvider.cs3",
         "name": "AnimeflvIOProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www3.animeflv.net&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 16009,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 16033,
         "status": 1,
         "language": "es",
         "authors": [
@@ -74,14 +74,14 @@
         ],
         "version": 1,
         "internalName": "AnimeflvnetProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AnimeflvnetProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/AnimeflvnetProvider.cs3",
         "name": "AnimeflvnetProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www.animesaturn.cc&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 17154,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 17187,
         "status": 1,
         "language": "it",
         "authors": [
@@ -93,14 +93,14 @@
         ],
         "version": 3,
         "internalName": "AnimeSaturnProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AnimeSaturnProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/AnimeSaturnProvider.cs3",
         "name": "AnimeSaturnProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www.animeworld.tv&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 21059,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 21067,
         "status": 1,
         "language": "it",
         "authors": [
@@ -113,14 +113,14 @@
         ],
         "version": 3,
         "internalName": "AnimeWorldProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AnimeWorldProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/AnimeWorldProvider.cs3",
         "name": "AnimeWorldProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=aniplay.it&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 21601,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 21609,
         "status": 1,
         "language": "it",
         "authors": [
@@ -131,15 +131,15 @@
             "Anime",
             "OVA"
         ],
-        "version": 4,
+        "version": 5,
         "internalName": "AniPlayProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AniPlayProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/AniPlayProvider.cs3",
         "name": "AniPlayProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=calciostreaming.live&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 8776,
         "status": 1,
         "language": "it",
@@ -151,14 +151,14 @@
         ],
         "version": 2,
         "internalName": "CalcioStreamingProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CalcioStreamingProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/CalcioStreamingProvider.cs3",
         "name": "CalcioStreamingProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=casacinema.lol&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 14733,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 14771,
         "status": 1,
         "language": "it",
         "authors": [
@@ -170,14 +170,14 @@
         ],
         "version": 3,
         "internalName": "CasaCinemaProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CasaCinemaProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/CasaCinemaProvider.cs3",
         "name": "CasaCinemaProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cineblog01.legal&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 11279,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 10116,
         "status": 1,
         "language": "it",
         "authors": [
@@ -189,33 +189,34 @@
         ],
         "version": 3,
         "internalName": "CineBlog01Provider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CineBlog01Provider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/CineBlog01Provider.cs3",
         "name": "CineBlog01Provider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cb01.rip&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 14155,
-        "status": 1,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 14412,
+        "status": 2,
         "language": "it",
         "authors": [
-            "Adippe"
+            "Adippe",
+            "Forthe"
         ],
         "tvTypes": [
             "TvSeries",
             "Movie"
         ],
-        "version": 2,
+        "version": 3,
         "internalName": "CineBlogProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CineBlogProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/CineBlogProvider.cs3",
         "name": "CineBlogProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cinecalidad.lol&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 15453,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 15447,
         "status": 1,
         "language": "es",
         "authors": [
@@ -227,14 +228,14 @@
         ],
         "version": 1,
         "internalName": "CinecalidadProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CinecalidadProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/CinecalidadProvider.cs3",
         "name": "CinecalidadProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cuevana3.me&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 18868,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 18876,
         "status": 1,
         "language": "es",
         "authors": [
@@ -247,13 +248,13 @@
         ],
         "version": 1,
         "internalName": "CuevanaProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CuevanaProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/CuevanaProvider.cs3",
         "name": "CuevanaProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dokumentalne.net&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 9196,
         "status": 1,
         "language": "pl",
@@ -265,14 +266,14 @@
         ],
         "version": 1,
         "internalName": "DokumentalneProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/DokumentalneProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/DokumentalneProvider.cs3",
         "name": "DokumentalneProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=doramasyt.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 17069,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 17107,
         "status": 1,
         "language": "es",
         "authors": [
@@ -284,12 +285,12 @@
         ],
         "version": 1,
         "internalName": "DoramasYTProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/DoramasYTProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/DoramasYTProvider.cs3",
         "name": "DoramasYTProvider"
     },
     {
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 9429,
         "status": 1,
         "language": "es",
@@ -301,14 +302,14 @@
         ],
         "version": 1,
         "internalName": "ElifilmsProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/ElifilmsProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/ElifilmsProvider.cs3",
         "name": "ElifilmsProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=entrepeliculasyseries.nu&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 12249,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 12248,
         "status": 1,
         "language": "es",
         "authors": [
@@ -320,14 +321,14 @@
         ],
         "version": 1,
         "internalName": "EntrepeliculasyseriesProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/EntrepeliculasyseriesProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/EntrepeliculasyseriesProvider.cs3",
         "name": "EntrepeliculasyseriesProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www23.estrenosdoramas.net&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 17422,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 17443,
         "status": 1,
         "language": "es",
         "authors": [
@@ -340,14 +341,14 @@
         ],
         "version": 1,
         "internalName": "EstrenosDoramasProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/EstrenosDoramasProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/EstrenosDoramasProvider.cs3",
         "name": "EstrenosDoramasProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=eurostreaming.social&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 11821,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 11832,
         "status": 1,
         "language": "it",
         "authors": [
@@ -358,14 +359,14 @@
         ],
         "version": 3,
         "internalName": "EurostreamingProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/EurostreamingProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/EurostreamingProvider.cs3",
         "name": "EurostreamingProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filman.cc&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 12601,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 12597,
         "status": 1,
         "language": "pl",
         "authors": [
@@ -377,14 +378,14 @@
         ],
         "version": 2,
         "internalName": "FilmanProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/FilmanProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/FilmanProvider.cs3",
         "name": "FilmanProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmpertutti.photo&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 14861,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 14866,
         "status": 1,
         "language": "it",
         "authors": [
@@ -396,14 +397,14 @@
         ],
         "version": 5,
         "internalName": "FilmpertuttiProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/FilmpertuttiProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/FilmpertuttiProvider.cs3",
         "name": "FilmpertuttiProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 14773,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 14794,
         "status": 1,
         "authors": [
             "Adippe"
@@ -413,14 +414,14 @@
         ],
         "version": 1,
         "internalName": "FreeTVProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/FreeTVProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/FreeTVProvider.cs3",
         "name": "FreeTVProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=french-stream.ac&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 18648,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 18676,
         "status": 1,
         "language": "fr",
         "authors": [
@@ -434,13 +435,13 @@
         "version": 1,
         "internalName": "FrenchStreamProvider",
         "description": "FRENCH STREAM en plus d'\u00eatre un site efficace et plaisant dispose d'un contenu visuel diversifi\u00e9",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/FrenchStreamProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/FrenchStreamProvider.cs3",
         "name": "FrenchStreamProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=guardaserie.golf&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 12009,
         "status": 1,
         "language": "it",
@@ -453,13 +454,13 @@
         ],
         "version": 3,
         "internalName": "GuardaSerieProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/GuardaSerieProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/GuardaSerieProvider.cs3",
         "name": "GuardaSerieProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hdmovie2.run&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 13509,
         "status": 1,
         "language": "hi",
@@ -472,14 +473,14 @@
         ],
         "version": 3,
         "internalName": "HDMovie5",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/HDMovie5.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/HDMovie5.cs3",
         "name": "HDMovie5"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ilgeniodellostreaming.hair&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 15410,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 15412,
         "status": 1,
         "language": "it",
         "authors": [
@@ -492,14 +493,14 @@
         ],
         "version": 5,
         "internalName": "IlGenioDelloStreamingProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/IlGenioDelloStreamingProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/IlGenioDelloStreamingProvider.cs3",
         "name": "IlGenioDelloStreamingProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 15628,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 15644,
         "status": 1,
         "authors": [
             "Adippe"
@@ -509,14 +510,14 @@
         ],
         "version": 1,
         "internalName": "IptvorgProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/IptvorgProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/IptvorgProvider.cs3",
         "name": "IptvorgProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=jkanime.net&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 22125,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 22127,
         "status": 1,
         "language": "es",
         "authors": [
@@ -528,14 +529,14 @@
         ],
         "version": 1,
         "internalName": "JKAnimeProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/JKAnimeProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/JKAnimeProvider.cs3",
         "name": "JKAnimeProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=mesfilms.lol&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 16390,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 16389,
         "status": 1,
         "language": "fr",
         "authors": [
@@ -546,14 +547,14 @@
         ],
         "version": 1,
         "internalName": "MesFilmsProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/MesFilmsProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/MesFilmsProvider.cs3",
         "name": "MesFilmsProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=monoschinos2.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 16763,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 16782,
         "status": 1,
         "language": "es",
         "authors": [
@@ -565,14 +566,14 @@
         ],
         "version": 1,
         "internalName": "MonoschinosProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/MonoschinosProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/MonoschinosProvider.cs3",
         "name": "MonoschinosProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www.mundodonghua.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 18331,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 18340,
         "status": 1,
         "language": "es",
         "authors": [
@@ -584,14 +585,14 @@
         ],
         "version": 2,
         "internalName": "MundoDonghuaProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/MundoDonghuaProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/MundoDonghuaProvider.cs3",
         "name": "MundoDonghuaProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=neko-sama.fr&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 25238,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 25250,
         "status": 1,
         "language": "fr",
         "authors": [
@@ -604,14 +605,14 @@
         "version": 1,
         "internalName": "NekosamaProvider",
         "description": " Ce site fait son entr\u00e9e dans la cat\u00e9gorie des meilleurs sites animes Fran\u00e7ais. Il est tr\u00e8s fiable car quasiment tous ses liens vid\u00e9os marchent. Il propose des animes en \u00ab VF \u00bb version fran\u00e7aise et en \u00ab VOSTFR \u00bb version originale Sous-titr\u00e9e en Fran\u00e7ais.",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/NekosamaProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/NekosamaProvider.cs3",
         "name": "NekosamaProvider"
     },
     {
         "iconUrl": "https://media.discordapp.net/attachments/1027568249900109875/1046110428402561025/JK8J1KX.png?width=%size%&height=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 19132,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 19155,
         "status": 1,
         "authors": [
             "ImZaw"
@@ -622,14 +623,14 @@
         "version": 6,
         "internalName": "NineGoalProvider",
         "description": "",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/NineGoalProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/NineGoalProvider.cs3",
         "name": "NineGoalProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=pelisflix.li&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 15359,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 15356,
         "status": 0,
         "language": "es",
         "authors": [
@@ -641,13 +642,13 @@
         ],
         "version": 1,
         "internalName": "PelisflixProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/PelisflixProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/PelisflixProvider.cs3",
         "name": "PelisflixProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=pelismart.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 11314,
         "status": 0,
         "language": "es",
@@ -660,13 +661,13 @@
         ],
         "version": 1,
         "internalName": "PeliSmartProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/PeliSmartProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/PeliSmartProvider.cs3",
         "name": "PeliSmartProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=pelisplushd.net&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 11054,
         "status": 0,
         "language": "es",
@@ -679,13 +680,13 @@
         ],
         "version": 1,
         "internalName": "PelisplusHDProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/PelisplusHDProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/PelisplusHDProvider.cs3",
         "name": "PelisplusHDProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=pelisplus.icu&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 14461,
         "status": 1,
         "language": "es",
@@ -698,14 +699,14 @@
         ],
         "version": 1,
         "internalName": "PelisplusProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/PelisplusProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/PelisplusProvider.cs3",
         "name": "PelisplusProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www.pinoy-hd.xyz&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 12429,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 12457,
         "status": 1,
         "language": "tl",
         "authors": [
@@ -718,13 +719,13 @@
         "version": 1,
         "internalName": "PinoyHDXyzProvider",
         "description": "Pinoy HD Movies - High Definition",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/PinoyHDXyzProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/PinoyHDXyzProvider.cs3",
         "name": "PinoyHDXyzProvider"
     },
     {
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 27260,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 27279,
         "status": 1,
         "language": "tl",
         "authors": [
@@ -736,14 +737,14 @@
         "version": 2,
         "internalName": "PinoyMovies",
         "description": "Includes PinoyMoviePediaProvider and PinoyMoviesEsProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/PinoyMovies.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/PinoyMovies.cs3",
         "name": "PinoyMovies"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www.pinoymovieshub.ph&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 18804,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 18807,
         "status": 1,
         "language": "tl",
         "authors": [
@@ -757,14 +758,14 @@
         "version": 3,
         "internalName": "PinoyMoviesHub",
         "description": "Pinoy Movies Hub",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/PinoyMoviesHub.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/PinoyMoviesHub.cs3",
         "name": "PinoyMoviesHub"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=seriesflix.video&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 14714,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 14705,
         "status": 1,
         "language": "es",
         "authors": [
@@ -776,14 +777,14 @@
         ],
         "version": 1,
         "internalName": "SeriesflixProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/SeriesflixProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/SeriesflixProvider.cs3",
         "name": "SeriesflixProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=skillshare.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 18235,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 18272,
         "status": 1,
         "language": "en",
         "authors": [
@@ -794,14 +795,14 @@
         ],
         "version": 5,
         "internalName": "SkillShareProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/SkillShareProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/SkillShareProvider.cs3",
         "name": "SkillShareProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=seriesflix.video&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 60809,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 64550,
         "status": 1,
         "language": "it",
         "authors": [
@@ -815,17 +816,17 @@
             "Anime",
             "OVA"
         ],
-        "version": 2,
+        "version": 3,
         "internalName": "SoraItalianStream",
         "description": "Provider che utilizza tmdb. Non tutti i links sono funzionanti",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/SoraItalianStream.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/SoraItalianStream.cs3",
         "name": "SoraItalianStream"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=starlive.xyz&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 14227,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 14267,
         "status": 1,
         "language": "it",
         "authors": [
@@ -836,14 +837,14 @@
         ],
         "version": 3,
         "internalName": "StarLiveProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/StarLiveProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/StarLiveProvider.cs3",
         "name": "StarLiveProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=streamingcommunity.online&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 29691,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 29708,
         "status": 1,
         "language": "it",
         "authors": [
@@ -855,14 +856,14 @@
         ],
         "version": 6,
         "internalName": "StreamingcommunityProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/StreamingcommunityProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/StreamingcommunityProvider.cs3",
         "name": "StreamingcommunityProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=tantifilm.mobi&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 16714,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 16715,
         "status": 1,
         "language": "it",
         "authors": [
@@ -874,14 +875,14 @@
         ],
         "version": 5,
         "internalName": "TantiFilmProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/TantiFilmProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/TantiFilmProvider.cs3",
         "name": "TantiFilmProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 24636,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 24660,
         "status": 1,
         "language": "it",
         "authors": [
@@ -892,13 +893,13 @@
         ],
         "version": 2,
         "internalName": "TvItalianaProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/TvItalianaProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/TvItalianaProvider.cs3",
         "name": "TvItalianaProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=tvpolan.ml&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 7446,
         "status": 1,
         "language": "pl",
@@ -910,13 +911,13 @@
         ],
         "version": 1,
         "internalName": "TvpolanProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/TvpolanProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/TvpolanProvider.cs3",
         "name": "TvpolanProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=vf-film.me&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 8074,
         "status": 1,
         "language": "fr",
@@ -928,12 +929,12 @@
         ],
         "version": 1,
         "internalName": "VfFilmProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/VfFilmProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/VfFilmProvider.cs3",
         "name": "VfFilmProvider"
     },
     {
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
         "fileSize": 9324,
         "status": 1,
         "language": "fr",
@@ -945,14 +946,14 @@
         ],
         "version": 1,
         "internalName": "VfSerieProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/VfSerieProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/VfSerieProvider.cs3",
         "name": "VfSerieProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=vizjer.pl&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 12521,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 12537,
         "status": 1,
         "language": "pl",
         "authors": [
@@ -964,14 +965,14 @@
         ],
         "version": 4,
         "internalName": "VizjerProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/VizjerProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/VizjerProvider.cs3",
         "name": "VizjerProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=vostfree.cx&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 20179,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 20202,
         "status": 1,
         "language": "fr",
         "authors": [
@@ -984,14 +985,14 @@
         "version": 1,
         "internalName": "VostfreeProvider",
         "description": " Ce site est certainement l\u2019un des meilleurs sites permettant de regarder des animes en ligne et gratuitement. Il vous propose la version \u00ab VF \u00bb version fran\u00e7aise et la \u00ab VOSTFR \u00bb version originale Sous-titr\u00e9e en Fran\u00e7ais.",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/VostfreeProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/VostfreeProvider.cs3",
         "name": "VostfreeProvider"
     },
     {
         "iconUrl": "https://raw.githubusercontent.com/recloudstream/cloudstream-extensions-multilingual/master/WebFlix/icon.png",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 20222,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 20220,
         "status": 1,
         "authors": [
             "Cloudburst"
@@ -1004,14 +1005,14 @@
         "version": 3,
         "internalName": "WebFlix",
         "description": "Adds multiple sites using WebFlix. This includes sites in English, Polish, Portuguese and Arabic",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/WebFlix.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/WebFlix.cs3",
         "name": "WebFlix"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=wiflix.zone&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 21960,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 21970,
         "status": 1,
         "language": "fr",
         "authors": [
@@ -1024,14 +1025,14 @@
         "version": 1,
         "internalName": "WiflixProvider",
         "description": "WIFLIX, le site gr\u00e2ce auquel vous allez pouvoir regarder vos films et s\u00e9ries pr\u00e9f\u00e9r\u00e9es",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/WiflixProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/WiflixProvider.cs3",
         "name": "WiflixProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=xcine.me&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 17864,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 17884,
         "status": 0,
         "language": "de",
         "authors": [
@@ -1045,14 +1046,14 @@
         ],
         "version": 1,
         "internalName": "XcineProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/XcineProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/XcineProvider.cs3",
         "name": "XcineProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=zaluknij.xyz&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
-        "fileSize": 12230,
+        "repositoryUrl": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual",
+        "fileSize": 12254,
         "status": 1,
         "language": "pl",
         "authors": [
@@ -1064,7 +1065,7 @@
         ],
         "version": 2,
         "internalName": "ZaluknijProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/ZaluknijProvider.cs3",
+        "url": "https://codeberg.org/cloudstream/cloudstream-extensions-multilingual/raw/branch/builds/ZaluknijProvider.cs3",
         "name": "ZaluknijProvider"
     }
 ]
