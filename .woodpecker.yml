@@ -12,6 +12,8 @@ pipeline:
 
   build:
     image: androidsdk/android-31
+    environment:
+      - GITHUB_REPOSITORY=$CI_REPO_LINK
     commands:
       - bash gradlew make makePluginsJson
       - cp **/build/*.cs3 $CI_WORKSPACE/../builds
