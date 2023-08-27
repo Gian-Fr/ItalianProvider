@@ -27,3 +27,5 @@ steps:
       - git add .
       - git commit --amend -m "Build $CI_COMMIT_SHA" || exit 0
       - git push --force
+    when:
+      - branch: [master]
