@@ -11,7 +11,7 @@ import com.lagradost.cloudstream3.utils.M3u8Helper
 import com.lagradost.cloudstream3.utils.Qualities
 
 class AniPlayProvider : MainAPI() {
-    override var mainUrl = "https://aniplay.it"
+    override var mainUrl = "https://aniplay.co"
     override var name = "AniPlay"
     override var lang = "it"
     override val hasMainPage = true
