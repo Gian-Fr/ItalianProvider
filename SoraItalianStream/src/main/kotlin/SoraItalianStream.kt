@@ -17,6 +17,7 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import kotlin.math.roundToInt
 
 open class SoraItalianStream : TmdbProvider() {
+
     override var name = "SoraStreamItaliano"
     override val hasMainPage = true
     override val hasDownloadSupport = true
@@ -34,12 +35,12 @@ open class SoraItalianStream : TmdbProvider() {
     companion object {
         private const val tmdbAPI = "https://api.themoviedb.org/3"
         private const val apiKey = "71f37e6dff3b879fa4656f19547c418c" // PLEASE DON'T STEAL
-        const val guardaserieUrl = "https://guardaserie.app"
-        const val filmpertuttiUrl = "https://www.filmpertutti.skin"
-        const val cb01Url = "https://cb01.tours/"
-        const val animeworldUrl = "https://www.animeworld.tv"
-        const val aniplayUrl = "https://aniplay.it"
-        const val animesaturnUrl = "https://www.animesaturn.in"
+        const val guardaserieUrl = "https://guardaserie.black"
+        const val filmpertuttiUrl = "https://www.filmpertutti.wine/"
+        const val cb01Url = "https://cb01.mobi/"
+        const val animeworldUrl = "https://www.animeworld.so"
+        const val aniplayUrl = "https://aniplay.co"
+        const val animesaturnUrl = "https://www.animesaturn.tv/"
         const val tmdb2mal = "https://tmdb2mal.slidemovies.org"
         fun getType(t: String?): TvType {
             return when (t) {
@@ -100,13 +101,11 @@ open class SoraItalianStream : TmdbProvider() {
     }
 
     override suspend fun getMainPage(
-        page: Int,
-        request: MainPageRequest
+        page: Int, request: MainPageRequest
     ): HomePageResponse {
         val type = if (request.data.contains("/movie")) "movie" else "tv"
-        val home = app.get(request.data + page)
-            .parsedSafe<Results>()?.results
-            ?.mapNotNull { media ->
+        val home =
+            app.get(request.data + page).parsedSafe<Results>()?.results?.mapNotNull { media ->
                 media.toSearchResponse(type)
             } ?: throw ErrorLoadingException("Invalid Json reponse")
         return newHomePageResponse(request.name, home)
@@ -126,10 +125,9 @@ open class SoraItalianStream : TmdbProvider() {
     override suspend fun search(query: String): List<SearchResponse>? {
         return app.get(
             "$tmdbAPI/search/multi?api_key=$apiKey&language=it-IT&query=$query&page=1&include_adult=false"
-        )
-            .parsedSafe<Results>()?.results?.mapNotNull { media ->
-                media.toSearchResponse()
-            }
+        ).parsedSafe<Results>()?.results?.mapNotNull { media ->
+            media.toSearchResponse()
+        }
     }
 
 
@@ -159,18 +157,22 @@ open class SoraItalianStream : TmdbProvider() {
                 Actor(
                     cast.name ?: cast.originalName ?: return@mapNotNull null,
                     getImageUrl(cast.profilePath)
-                ),
-                getActorRole(cast.knownForDepartment)
+                ), getActorRole(cast.knownForDepartment)
             )
         } ?: return null
         val recommendations =
             res.recommandations?.results?.mapNotNull { media -> media.toSearchResponse() }
 
         val trailer =
-            res.videos?.results?.map { "https://www.youtube.com/watch?v=${it.key}" }
-                ?.randomOrNull()
+            res.videos?.results?.map { "https://www.youtube.com/watch?v=${it.key}" }?.randomOrNull()
 
         val isAnime = res.genres?.any { it.id == 16L } == true
+
+        val backdropPath = res.backdropPath
+
+        val posterPath = res.posterPath
+
+        val tvDate = res.tvDate
 
         return if (type == TvType.Movie) { //can be a movie or a anime movie
             newMovieLoadResponse(
@@ -184,7 +186,10 @@ open class SoraItalianStream : TmdbProvider() {
                     title = title,
                     year = year,
                     orgTitle = orgTitle,
-                    isAnime = isAnime
+                    isAnime = isAnime,
+                    backdropPath = backdropPath,
+                    posterPath = posterPath,
+                    tvDate = tvDate
                 ).toJson(),
             ) {
                 this.posterUrl = getOriImageUrl(res.backdropPath)
@@ -205,8 +210,7 @@ open class SoraItalianStream : TmdbProvider() {
 
             res.seasons?.filter { it.seasonNumber != 0 }?.forEachIndexed { index, season ->
                 val seasonData = seasonDataList?.get(index)
-                if (seasonData?.first()?.episodeNumber == 1)
-                    seasonNum += 1
+                if (seasonData?.first()?.episodeNumber == 1) seasonNum += 1
 
                 seasonData?.forEach { eps ->
                     episodes.add(Episode(
@@ -219,7 +223,10 @@ open class SoraItalianStream : TmdbProvider() {
                             title = title,
                             year = year ?: season.airDate?.split("-")?.first()?.toIntOrNull(),
                             orgTitle = orgTitle,
-                            isAnime = isAnime
+                            isAnime = isAnime,
+                            backdropPath = backdropPath,
+                            posterPath = posterPath,
+                            tvDate = tvDate
                         ).toJson(),
                         name = eps.name,
                         season = seasonNum,
@@ -233,10 +240,7 @@ open class SoraItalianStream : TmdbProvider() {
                 }
             }
             newTvSeriesLoadResponse(
-                title,
-                url,
-                TvType.TvSeries,
-                episodes
+                title, url, TvType.TvSeries, episodes
             ) {
                 this.posterUrl = getOriImageUrl(res.backdropPath)
                 this.year = year
@@ -259,64 +263,51 @@ open class SoraItalianStream : TmdbProvider() {
 
         val res = parseJson<LinkData>(data)
         val malID = app.get("$tmdb2mal/?id=${res.id}&s=${res.season}").text.trim()
-        argamap(
-            {
-                if (res.isAnime) invoAnimeWorld(
-                    malID,
-                    res.title,
-                    res.episode,
-                    callback
-                )
-            },
-            {
-                if (res.isAnime) invoAniPlay(
-                    malID,
-                    res.title,
-                    res.episode,
-                    res.year,
-                    callback
-                )
-            },
-            {
-                if (res.isAnime) invoAnimeSaturn(
-                    malID,
-                    res.title,
-                    res.episode,
-                    callback
-                )
-            },
-            {
-                if (res.type == "movie") invoGuardare(
-                    res.imdbId,
-                    subtitleCallback,
-                    callback
-                ) //just movies/anime movie
-            },
-            {
-                if (res.type == "tv") invoGuardaserie( //has tv series and anime
-                    res.imdbId,
-                    res.season,
-                    res.episode,
-                    subtitleCallback,
-                    callback
-                )
-            },
-            {
-                invoFilmpertutti( //has tv series, film and some anime
-                    res.imdbId,
-                    res.title,
-                    res.type,
-                    res.season,
-                    res.episode,
-                    res.year,
-                    subtitleCallback,
-                    callback
-                )
-            },
-            {
-                if (res.type == "movie") invoCb01(res.title, res.year, subtitleCallback, callback)
-            }
-        )
+        argamap({
+            if (res.isAnime) invoAnimeWorld(
+                malID, res.title, res.episode, callback
+            )
+        }, {
+            if (res.isAnime) invoAniPlay(
+                malID, res.title, res.episode, res.year, callback
+            )
+        }, {
+            if (res.isAnime) invoAnimeSaturn(
+                malID, res.title, res.episode, callback
+            )
+        }, {
+            if (res.type == "movie") invoGuardare(
+                res.imdbId, subtitleCallback, callback
+            ) //just movies/anime movie
+        }, {
+            if (res.type == "tv") invoGuardaserie( //has tv series and anime
+                res.imdbId, res.season, res.episode, subtitleCallback, callback
+            )
+        }, {
+            invoFilmpertutti( //has tv series, film and some anime
+                res.imdbId,
+                res.title,
+                res.type,
+                res.season,
+                res.episode,
+                res.year,
+                subtitleCallback,
+                callback
+            )
+        }, {
+            invoCb01( //has tv series, film and some anime
+                res.title ?: "No title",
+                res.type ?: "movie",
+                res.season,
+                res.episode,
+                res.backdropPath ?: "", //to make sure is the right show
+                res.posterPath ?: "", //to make sure is the right show
+                res.tvDate ?: "", //to make sure is the right show
+                res.year,
+                subtitleCallback,
+                callback
+            )
+        })
 
         return true
     }
@@ -332,7 +323,10 @@ open class SoraItalianStream : TmdbProvider() {
         val title: String? = null,
         val year: Int? = null,
         val orgTitle: String? = null,
-        val isAnime: Boolean
+        val isAnime: Boolean,
+        val backdropPath: String? = null,
+        val posterPath: String? = null,
+        val tvDate: String? = null
     )
 
     data class Data(
@@ -452,8 +446,7 @@ open class SoraItalianStream : TmdbProvider() {
     )
 
     data class Genre(
-        val id: Long? = null,
-        val name: String? = null
+        val id: Long? = null, val name: String? = null
     )
 
     data class Season(
