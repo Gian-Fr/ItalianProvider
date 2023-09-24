@@ -17,7 +17,7 @@ import org.mozilla.javascript.Context
 import org.mozilla.javascript.Scriptable
 
 class AnimeWorldProvider : MainAPI() {
-    override var mainUrl = "https://www.animeworld.tv"
+    override var mainUrl = "https://www.animeworld.so"
     override var name = "AnimeWorld"
     override var lang = "it"
     override val hasMainPage = true

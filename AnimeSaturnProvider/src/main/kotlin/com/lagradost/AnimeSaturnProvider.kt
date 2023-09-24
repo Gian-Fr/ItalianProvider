@@ -13,7 +13,7 @@ import com.lagradost.cloudstream3.utils.Qualities
 import org.jsoup.nodes.Element
 
 class AnimeSaturnProvider : MainAPI() {
-    override var mainUrl = "https://www.animesaturn.in"
+    override var mainUrl = "https://www.animesaturn.tv"
     override var name = "AnimeSaturn"
     override var lang = "it"
     override val hasMainPage = true
