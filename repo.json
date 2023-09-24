@@ -1,0 +1,8 @@
+{
+    "name": "Italian providers repository",
+    "description": "Cloudstream Italian Plugin Repository",
+    "manifestVersion": 1,
+    "pluginLists": [
+      "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/plugins.json"
+    ]
+}
