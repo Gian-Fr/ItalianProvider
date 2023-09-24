@@ -1,0 +1,259 @@
+[
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=altadefinizione.vodka&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 11087,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr",
+            "Adippe"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "AltadefinizioneProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/AltadefinizioneProvider.cs3",
+        "name": "AltadefinizioneProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.animesaturn.cc&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 17116,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr"
+        ],
+        "tvTypes": [
+            "Anime",
+            "AnimeMovie"
+        ],
+        "version": 1,
+        "internalName": "AnimeSaturnProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/AnimeSaturnProvider.cs3",
+        "name": "AnimeSaturnProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=aniplay.it&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 21531,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr"
+        ],
+        "tvTypes": [
+            "AnimeMovie",
+            "Anime",
+            "OVA"
+        ],
+        "version": 1,
+        "internalName": "AniPlayProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/AniPlayProvider.cs3",
+        "name": "AniPlayProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=calciostreaming.live&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 8764,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr",
+            "Adippe"
+        ],
+        "tvTypes": [
+            "Live"
+        ],
+        "version": 1,
+        "internalName": "CalcioStreamingProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/CalcioStreamingProvider.cs3",
+        "name": "CalcioStreamingProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=filmpertutti.casino&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 12509,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr",
+            "Adippe"
+        ],
+        "tvTypes": [
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "FilmpertuttiProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/FilmpertuttiProvider.cs3",
+        "name": "FilmpertuttiProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 14764,
+        "status": 1,
+        "authors": [
+            "Gian-Fr",
+            "Adippe"
+        ],
+        "tvTypes": [
+            "Live"
+        ],
+        "version": 1,
+        "internalName": "FreeTVProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/FreeTVProvider.cs3",
+        "name": "FreeTVProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=guardaserie.ceo&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 10922,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr",
+            "Adippe"
+        ],
+        "tvTypes": [
+            "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "GuardaSerieProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/GuardaSerieProvider.cs3",
+        "name": "GuardaSerieProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=ilgeniodellostreaming.food&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 13774,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr",
+            "Adippe",
+            "Forthe"
+        ],
+        "tvTypes": [
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "IlGenioDelloStreamingProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/IlGenioDelloStreamingProvider.cs3",
+        "name": "IlGenioDelloStreamingProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 15585,
+        "status": 1,
+        "authors": [
+            "Gian-Fr",
+            "Adippe"
+        ],
+        "tvTypes": [
+            "Live"
+        ],
+        "version": 1,
+        "internalName": "IptvorgProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/IptvorgProvider.cs3",
+        "name": "IptvorgProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=seriesflix.video&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 64540,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr",
+            "Adippe",
+            "Forthe"
+        ],
+        "tvTypes": [
+            "TvSeries",
+            "Movie",
+            "AnimeMovie",
+            "Anime",
+            "OVA"
+        ],
+        "version": 1,
+        "internalName": "SoraItalianStream",
+        "description": "Provider che utilizza tmdb. Non tutti i links sono funzionanti",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/SoraItalianStream.cs3",
+        "name": "SoraItalianStream"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=streamingcommunity.online&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 31730,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr",
+            "Adippe"
+        ],
+        "tvTypes": [
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "StreamingcommunityProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/StreamingcommunityProvider.cs3",
+        "name": "StreamingcommunityProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=tantifilm.casa&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 15402,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr",
+            "Adippe"
+        ],
+        "tvTypes": [
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "TantiFilmProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/TantiFilmProvider.cs3",
+        "name": "TantiFilmProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "fileSize": 24633,
+        "status": 1,
+        "language": "it",
+        "authors": [
+            "Gian-Fr",
+            "Adippe"
+        ],
+        "tvTypes": [
+            "Live"
+        ],
+        "version": 1,
+        "internalName": "TvItalianaProvider",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/TvItalianaProvider.cs3",
+        "name": "TvItalianaProvider"
+    }
+]
