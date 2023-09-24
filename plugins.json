@@ -2,7 +2,7 @@
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=altadefinizione.tienda&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 12243,
         "status": 1,
         "language": "it",
@@ -14,13 +14,13 @@
         ],
         "version": 3,
         "internalName": "AltadefinizioneProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/AltadefinizioneProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/AltadefinizioneProvider.cs3",
         "name": "AltadefinizioneProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www.animesaturn.cc&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 17188,
         "status": 1,
         "language": "it",
@@ -33,13 +33,13 @@
         ],
         "version": 3,
         "internalName": "AnimeSaturnProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/AnimeSaturnProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/AnimeSaturnProvider.cs3",
         "name": "AnimeSaturnProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www.animeworld.tv&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 21068,
         "status": 1,
         "language": "it",
@@ -53,13 +53,13 @@
         ],
         "version": 3,
         "internalName": "AnimeWorldProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/AnimeWorldProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/AnimeWorldProvider.cs3",
         "name": "AnimeWorldProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=aniplay.it&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 21610,
         "status": 1,
         "language": "it",
@@ -73,13 +73,13 @@
         ],
         "version": 5,
         "internalName": "AniPlayProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/AniPlayProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/AniPlayProvider.cs3",
         "name": "AniPlayProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=calciostreaming.live&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
         "fileSize": 8775,
         "status": 1,
         "language": "it",
@@ -91,13 +91,13 @@
         ],
         "version": 2,
         "internalName": "CalcioStreamingProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/CalcioStreamingProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/CalcioStreamingProvider.cs3",
         "name": "CalcioStreamingProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=casacinema.lol&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 14772,
         "status": 1,
         "language": "it",
@@ -110,13 +110,13 @@
         ],
         "version": 3,
         "internalName": "CasaCinemaProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/CasaCinemaProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/CasaCinemaProvider.cs3",
         "name": "CasaCinemaProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cineblog01.legal&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 10115,
         "status": 1,
         "language": "it",
@@ -129,13 +129,13 @@
         ],
         "version": 3,
         "internalName": "CineBlog01Provider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/CineBlog01Provider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/CineBlog01Provider.cs3",
         "name": "CineBlog01Provider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cb01.rip&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 14415,
         "status": 2,
         "language": "it",
@@ -149,13 +149,13 @@
         ],
         "version": 3,
         "internalName": "CineBlogProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/CineBlogProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/CineBlogProvider.cs3",
         "name": "CineBlogProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=eurostreaming.social&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 11831,
         "status": 1,
         "language": "it",
@@ -167,13 +167,13 @@
         ],
         "version": 3,
         "internalName": "EurostreamingProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/EurostreamingProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/EurostreamingProvider.cs3",
         "name": "EurostreamingProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmpertutti.photo&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 14870,
         "status": 1,
         "language": "it",
@@ -186,13 +186,13 @@
         ],
         "version": 5,
         "internalName": "FilmpertuttiProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/FilmpertuttiProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/FilmpertuttiProvider.cs3",
         "name": "FilmpertuttiProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=guardaserie.golf&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 12008,
         "status": 1,
         "language": "it",
@@ -205,13 +205,13 @@
         ],
         "version": 3,
         "internalName": "GuardaSerieProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/GuardaSerieProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/GuardaSerieProvider.cs3",
         "name": "GuardaSerieProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ilgeniodellostreaming.hair&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 15410,
         "status": 1,
         "language": "it",
@@ -225,13 +225,13 @@
         ],
         "version": 5,
         "internalName": "IlGenioDelloStreamingProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/IlGenioDelloStreamingProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/IlGenioDelloStreamingProvider.cs3",
         "name": "IlGenioDelloStreamingProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=seriesflix.video&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 64558,
         "status": 1,
         "language": "it",
@@ -249,13 +249,13 @@
         "version": 3,
         "internalName": "SoraItalianStream",
         "description": "Provider che utilizza tmdb. Non tutti i links sono funzionanti",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/SoraItalianStream.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/SoraItalianStream.cs3",
         "name": "SoraItalianStream"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=starlive.xyz&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 14261,
         "status": 1,
         "language": "it",
@@ -267,13 +267,13 @@
         ],
         "version": 3,
         "internalName": "StarLiveProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/StarLiveProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/StarLiveProvider.cs3",
         "name": "StarLiveProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=streamingcommunity.online&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 29702,
         "status": 1,
         "language": "it",
@@ -286,13 +286,13 @@
         ],
         "version": 6,
         "internalName": "StreamingcommunityProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/StreamingcommunityProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/StreamingcommunityProvider.cs3",
         "name": "StreamingcommunityProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=tantifilm.mobi&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 16710,
         "status": 1,
         "language": "it",
@@ -305,13 +305,13 @@
         ],
         "version": 5,
         "internalName": "TantiFilmProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/TantiFilmProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/TantiFilmProvider.cs3",
         "name": "TantiFilmProvider"
     },
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/repo",
+        "repositoryUrl": "https://github.com/Gian-Fr/ItaliaProvider",
         "fileSize": 24664,
         "status": 1,
         "language": "it",
@@ -323,7 +323,7 @@
         ],
         "version": 2,
         "internalName": "TvItalianaProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/TvItalianaProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/ItaliaProvider/builds/TvItalianaProvider.cs3",
         "name": "TvItalianaProvider"
     }
 ]
