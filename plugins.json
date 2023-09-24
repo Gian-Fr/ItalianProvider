@@ -14,7 +14,7 @@
         ],
         "version": 3,
         "internalName": "AltadefinizioneProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AltadefinizioneProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/AltadefinizioneProvider.cs3",
         "name": "AltadefinizioneProvider"
     },
     {
@@ -33,7 +33,7 @@
         ],
         "version": 3,
         "internalName": "AnimeSaturnProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AnimeSaturnProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/AnimeSaturnProvider.cs3",
         "name": "AnimeSaturnProvider"
     },
     {
@@ -53,7 +53,7 @@
         ],
         "version": 3,
         "internalName": "AnimeWorldProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AnimeWorldProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/AnimeWorldProvider.cs3",
         "name": "AnimeWorldProvider"
     },
     {
@@ -73,7 +73,7 @@
         ],
         "version": 5,
         "internalName": "AniPlayProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AniPlayProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/AniPlayProvider.cs3",
         "name": "AniPlayProvider"
     },
     {
@@ -91,7 +91,7 @@
         ],
         "version": 2,
         "internalName": "CalcioStreamingProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CalcioStreamingProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/CalcioStreamingProvider.cs3",
         "name": "CalcioStreamingProvider"
     },
     {
@@ -110,7 +110,7 @@
         ],
         "version": 3,
         "internalName": "CasaCinemaProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CasaCinemaProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/CasaCinemaProvider.cs3",
         "name": "CasaCinemaProvider"
     },
     {
@@ -129,7 +129,7 @@
         ],
         "version": 3,
         "internalName": "CineBlog01Provider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CineBlog01Provider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/CineBlog01Provider.cs3",
         "name": "CineBlog01Provider"
     },
     {
@@ -149,7 +149,7 @@
         ],
         "version": 3,
         "internalName": "CineBlogProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/CineBlogProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/CineBlogProvider.cs3",
         "name": "CineBlogProvider"
     },
     {
@@ -167,7 +167,7 @@
         ],
         "version": 3,
         "internalName": "EurostreamingProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/EurostreamingProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/EurostreamingProvider.cs3",
         "name": "EurostreamingProvider"
     },
     {
@@ -186,7 +186,7 @@
         ],
         "version": 5,
         "internalName": "FilmpertuttiProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/FilmpertuttiProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/FilmpertuttiProvider.cs3",
         "name": "FilmpertuttiProvider"
     },
     {
@@ -205,7 +205,7 @@
         ],
         "version": 3,
         "internalName": "GuardaSerieProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/GuardaSerieProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/GuardaSerieProvider.cs3",
         "name": "GuardaSerieProvider"
     },
     {
@@ -225,7 +225,7 @@
         ],
         "version": 5,
         "internalName": "IlGenioDelloStreamingProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/IlGenioDelloStreamingProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/IlGenioDelloStreamingProvider.cs3",
         "name": "IlGenioDelloStreamingProvider"
     },
     {
@@ -249,7 +249,7 @@
         "version": 3,
         "internalName": "SoraItalianStream",
         "description": "Provider che utilizza tmdb. Non tutti i links sono funzionanti",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/SoraItalianStream.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/SoraItalianStream.cs3",
         "name": "SoraItalianStream"
     },
     {
@@ -267,7 +267,7 @@
         ],
         "version": 3,
         "internalName": "StarLiveProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/StarLiveProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/StarLiveProvider.cs3",
         "name": "StarLiveProvider"
     },
     {
@@ -286,7 +286,7 @@
         ],
         "version": 6,
         "internalName": "StreamingcommunityProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/StreamingcommunityProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/StreamingcommunityProvider.cs3",
         "name": "StreamingcommunityProvider"
     },
     {
@@ -305,7 +305,7 @@
         ],
         "version": 5,
         "internalName": "TantiFilmProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/TantiFilmProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/TantiFilmProvider.cs3",
         "name": "TantiFilmProvider"
     },
     {
@@ -323,7 +323,7 @@
         ],
         "version": 2,
         "internalName": "TvItalianaProvider",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/TvItalianaProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gian-Fr/repo/builds/TvItalianaProvider.cs3",
         "name": "TvItalianaProvider"
     }
 ]
