@@ -47,20 +47,15 @@ class EurostreamingProvider : MainAPI() {
     }
 
     override suspend fun search(query: String): List<SearchResponse> {
-        val body = FormBody.Builder()
-            .addEncoded("do", "search")
-            .addEncoded("subaction", "search")
-            .addEncoded("story", query)
-            .addEncoded("sortby", "news_read")
-            .build()
 
-        val doc = app.post(
-            "$mainUrl/index.php",
-            requestBody = body,
+        val encodedQuery = query.replace(" ", "+")
+        val searchUrl = "$mainUrl/index.php?s=$encodedQuery"
+        val results = app.get(
+            searchUrl,
             interceptor = interceptor
             ).document
 
-        return doc.select("div.post-thumb").mapNotNull {
+        return results.select("div.post-thumb").mapNotNull {
             it?.toSearchResult()
         }
     }
