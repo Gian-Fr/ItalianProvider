@@ -17,7 +17,7 @@ import org.jsoup.nodes.Element
 
 class IlGenioDelloStreamingProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://ilgeniodellostreaming.lat"
+    override var mainUrl = "https://ilgeniodellostreaming.food"
     override var name = "IlGenioDelloStreaming"
     override val hasMainPage = true
     override val hasChromecastSupport = true
