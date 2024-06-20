@@ -20,6 +20,9 @@ class EurostreamingProvider : MainAPI() {
         TvType.TvSeries
     )
 
+    private val userAgent =
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
+
     override val mainPage = mainPageOf(
         "$mainUrl/serie-tv-archive/page/" to "Ultime serie Tv",
         "$mainUrl/animazione/page/" to "Ultime serie Animazione",
@@ -51,7 +54,8 @@ class EurostreamingProvider : MainAPI() {
         val encodedQuery = query.replace(" ", "+")
         val searchUrl = "$mainUrl/index.php?s=$encodedQuery"
         val results = app.get(
-            searchUrl,
+            headers = mapOf("user-agent" to userAgent),
+            url = searchUrl,
             interceptor = interceptor
             ).document
 
