@@ -51,7 +51,7 @@ class GuardaSerieProvider : MainAPI() {
 
     override suspend fun search(query: String): List<SearchResponse> {
         val encodedQuery = query.replace(" ", "+")
-        val searchUrl = "$mainUrl/?storys=$encodedQuery&do=search&subaction=search"
+        val searchUrl = "$mainUrl/?story=$encodedQuery&do=search&subaction=search"
         val doc = app.get(
             headers = mapOf("user-agent" to userAgent),
            url = searchUrl
