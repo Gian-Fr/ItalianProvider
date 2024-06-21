@@ -16,7 +16,7 @@ import com.lagradost.cloudstream3.network.CloudflareKiller
 
 class FilmpertuttiProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://filmpertutti.bet"
+    override var mainUrl = "https://filmpertutti.casino"
     override var name = "FilmPerTutti"
     override val hasMainPage = true
     override val hasChromecastSupport = true
@@ -27,8 +27,8 @@ class FilmpertuttiProvider : MainAPI() {
     override var sequentialMainPage = true
     override var sequentialMainPageDelay: Long = 50
     override val mainPage = mainPageOf(
-        Pair("$mainUrl/category/film/page/", "Film Popolari"),
-        Pair("$mainUrl/category/serie-tv/page/", "Serie Tv Popolari"),
+        Pair("$mainUrl/category/film/", "Film Popolari"),
+        Pair("$mainUrl/category/serie-tv/", "Serie Tv Popolari"),
         Pair("$mainUrl/prime-visioni/", "Ultime uscite")
     )
 
@@ -65,11 +65,10 @@ class FilmpertuttiProvider : MainAPI() {
         val queryformatted = query.replace(" ", "+")
         val url = "$mainUrl/?s=$queryformatted"
         val doc = app.get(url).document
-        return doc.select("ul.posts > li").map {
-            val title = it.selectFirst("div.title")!!.text().substringBeforeLast("(")
-                .substringBeforeLast("[")
+        return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").map {
+            val title = it.text()
             val link = it.selectFirst("a")!!.attr("href")
-            val image = it.selectFirst("a")!!.attr("data-thumbnail")
+            val image = it.selectFirst("a > div > img")!!.attr("src")
             val quality = getQualityFromString(it.selectFirst("div.hd")?.text())
 
             MovieSearchResponse(
