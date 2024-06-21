@@ -1,5 +1,5 @@
 // use an integer for version numbers
-version = 3
+version = 1
 
 
 cloudstream {
@@ -7,7 +7,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
 
     // description = "Lorem Ipsum"
-    authors = listOf("Adippe")
+    authors = listOf("Gian-Fr","Adippe")
 
     /**
      * Status int as the following:
@@ -22,5 +22,5 @@ cloudstream {
         "Movie",
     )
 
-    iconUrl = "https://www.google.com/s2/favicons?domain=guardaserie.golf&sz=%size%"
+    iconUrl = "https://www.google.com/s2/favicons?domain=guardaserie.ceo&sz=%size%"
 }

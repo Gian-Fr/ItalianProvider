@@ -8,18 +8,20 @@ import com.lagradost.cloudstream3.utils.loadExtractor
 
 class GuardaSerieProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://guardaserie.racing"
+    override var mainUrl = "https://guardaserie.ceo"
     override var name = "GuardaSerie"
     override val hasMainPage = true
     override val hasChromecastSupport = true
     override var sequentialMainPage = true
+    private val userAgent =
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
     override val supportedTypes = setOf(
         TvType.TvSeries,
     )
     override val mainPage = mainPageOf(
         Pair("$mainUrl/serietv-popolari/page/", "Serie Tv Popolari"),
-        Pair("$mainUrl/serietv-streaming/page/", "Ultime Serie Tv"),
-        Pair("$mainUrl/top-imdb/page/", "Top IMDB")
+        Pair("$mainUrl/serietv-streaming/", "Ultime Serie Tv"),
+        Pair("$mainUrl/top-imdb/", "Top IMDB")
     )
 
 
@@ -48,12 +50,11 @@ class GuardaSerieProvider : MainAPI() {
     }
 
     override suspend fun search(query: String): List<SearchResponse> {
-        val doc = app.post(
-            mainUrl, data = mapOf(
-                "do" to "search",
-                "subaction" to "search",
-                "story" to query
-            )
+        val encodedQuery = query.replace(" ", "+")
+        val searchUrl = "$mainUrl/?storys=$encodedQuery&do=search&subaction=search"
+        val doc = app.get(
+            headers = mapOf("user-agent" to userAgent),
+           url = searchUrl
         ).document
         return doc.select("div.mlnew").drop(1).map { series ->
             val title = series.selectFirst("div.mlnh-2")!!.text()
