@@ -61,23 +61,22 @@ class FilmpertuttiProvider : MainAPI() {
         return newHomePageResponse(request.name, home)
     }
 
+    private fun Element.toSearchResponse(): MovieSearchResponse? {
+        val title = this.text()
+        val link = this.selectFirst("a")!!.attr("href")
+        val image = this.selectFirst("a > div > img")!!.attr("src")
+
+        return newMovieSearchResponse(
+            title,
+            link,
+            TvType.Movie){addPoster(image)}
+    }
     override suspend fun search(query: String): List<SearchResponse> {
         val queryformatted = query.replace(" ", "+")
         val url = "$mainUrl/?s=$queryformatted"
         val doc = app.get(url).document
-        return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").map {
-            val title = it.text()
-            val link = it.selectFirst("a")!!.attr("href")
-            val image = it.selectFirst("a > div > img")!!.attr("src")
-            val quality = getQualityFromString(it.selectFirst("div.hd")?.text())
-
-            MovieSearchResponse(
-                title,
-                link,
-                this.name,
-                quality = quality,
-                posterUrl = image
-            )
+        return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").mapNotNull {
+it.toSearchResponse()
         }
     }
 
