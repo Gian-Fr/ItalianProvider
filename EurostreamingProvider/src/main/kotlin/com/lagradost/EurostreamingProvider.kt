@@ -31,7 +31,7 @@ class EurostreamingProvider : MainAPI() {
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
         val url = request.data + page
 
-        val soup = app.get(url, interceptor = interceptor).document
+        val soup = app.get(url).document
         val home = soup.select("div.post-thumb").mapNotNull {
             it.toSearchResult()
         }
@@ -41,7 +41,7 @@ class EurostreamingProvider : MainAPI() {
     private fun Element.toSearchResult(): SearchResponse? {
         val title = this.selectFirst("a")?.attr("title") ?: return null
         val link = this.selectFirst("a")?.attr("href") ?: return null
-        val image = fixUrlNull(mainUrl + this.selectFirst("img")?.attr("src")?.trim())
+        val image = fixUrlNull(this.selectFirst("img.Thumbnail")?.attr("src")?.trim())
 
         return newTvSeriesSearchResponse(title, link, TvType.TvSeries){
             this.posterUrl = image
@@ -56,7 +56,6 @@ class EurostreamingProvider : MainAPI() {
         val results = app.get(
             headers = mapOf("user-agent" to userAgent),
             url = searchUrl,
-            interceptor = interceptor
             ).document
 
         return results.select("div.post-thumb").mapNotNull {
