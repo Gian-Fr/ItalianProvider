@@ -20,6 +20,17 @@ class EurostreamingProvider : MainAPI() {
         TvType.TvSeries
     )
 
+    fun extractSeasonAndEpisode(line: String): Pair<Int, Int> {
+        val regex = Regex("""(\d+)×(\d+)""")
+        val matchResult = regex.find(line)
+        return if (matchResult != null) {
+            val (season, episode) = matchResult.destructured
+            Pair(season.toInt(), episode.toInt())
+        } else {
+            throw IllegalArgumentException("No match found in line: $line")
+        }
+    }
+
     private val userAgent =
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
 
@@ -64,28 +75,52 @@ class EurostreamingProvider : MainAPI() {
     }
 
     override suspend fun load(url: String): LoadResponse {
-        val page = app.get(url, interceptor = interceptor)
+        val page = app.get(url,headers = mapOf("user-agent" to userAgent))
         val document = page.document
-        val title = document.selectFirst("h2")!!.text().replace("^([1-9+]]$","")
-        val style = document.selectFirst("div.entry-cover")!!.attr("style")
-        val poster = fixUrl(Regex("(/upload.+\\))").find(style)!!.value.dropLast(1))
+        val title = document.selectFirst(".entry-title")!!.text()
+        val style = document.selectFirst("div.entry-content")!!.attr("style")
+        val poster = fixUrl(document.selectFirst("div.entry-content > p > img")!!.attr("src"))
         val episodeList = ArrayList<Episode>()
-        document.select("div.tab-pane.fade").map { element ->
-            val season = element.attr("id").filter { it.isDigit() }.toInt()
-            element.select("li").filter { it-> it.selectFirst("a")?.hasAttr("data-title")?:false }.map{episode ->
-                val data = episode.select("div.mirrors > a").map { it.attr("data-link") }.toJson()
-                val epnameData = episode.selectFirst("a")
-                val epTitle = epnameData!!.attr("data-title")
-                val epNum = epnameData.text().toInt()
-                episodeList.add(
-                    Episode(
-                        data,
-                        epTitle,
-                        season,
-                        epNum
+        document.select("div.entry-content > div > div").map { element ->
+            var nextEpisode=false
+            val season= element.select("div:nth-child(2)")
+                //process episode names
+            // Split the text by '\n' and process each line
+            val lines = season.text().split("\n")
+                .map { it.trim() } // Trim each line
+                .filter { it.isNotEmpty() } // Filter out any empty lines
+                .map { it.substringBefore("–") } // Remove part after the first '–'
 
-                    )
-                )
+            // Create a mutable list to store the processed lines
+            val episodes_names = mutableListOf<String>()
+            var EpisodeNameIndex= 0
+            // Add each line to the list
+            episodes_names.addAll(lines)
+
+            //no more <li> , but only <a> separated with <br>
+
+            val links = season.first()!!.children()
+            for (link in links){
+                if (link.tagName()=="a" && !nextEpisode){
+                    val data = link.attr("href")
+                    val epTitle = episodes_names.get(EpisodeNameIndex)
+                    val (seasonNum, epNum) = extractSeasonAndEpisode(epTitle)
+
+                    EpisodeNameIndex++
+                    episodeList.add(
+                        Episode(
+                            data,
+                            epTitle,
+                            seasonNum,
+                            epNum
+
+                        ))
+                    nextEpisode=true
+                }
+                if(link.tagName()=="br"){
+                    nextEpisode=false
+                }
+
             }
         }
         return newTvSeriesLoadResponse(title, url, TvType.TvSeries, episodeList) {
