@@ -9,7 +9,7 @@ import com.lagradost.cloudstream3.network.CloudflareKiller
 
 class CineBlogProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://cb01.mobi"
+    override var mainUrl = "https://cb01.church"
     override var name = "CB01"
     override val hasMainPage = true
     override val hasChromecastSupport = true
