@@ -1,6 +1,6 @@
 package com.lagradost
 
-//import androidx.core.text.parseAsHtml
+
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addRating
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
@@ -10,8 +10,6 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.ShortLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 import org.jsoup.nodes.Element
-import com.lagradost.cloudstream3.utils.AppUtils.html
-import com.lagradost.cloudstream3.network.CloudflareKiller
 
 
 class FilmpertuttiProvider : MainAPI() {
@@ -61,7 +59,7 @@ class FilmpertuttiProvider : MainAPI() {
         return newHomePageResponse(request.name, home)
     }
 
-    private fun Element.toSearchResponse(): MovieSearchResponse? {
+    private fun Element.toSearchResponse(): MovieSearchResponse {
         val title = this.text()
         val link = this.selectFirst("a")!!.attr("href")
         val image = this.selectFirst("a > div > img")!!.attr("src")
@@ -69,14 +67,17 @@ class FilmpertuttiProvider : MainAPI() {
         return newMovieSearchResponse(
             title,
             link,
-            TvType.Movie){addPoster(image)}
+            TvType.Movie){
+                this.posterUrl = image
+                this.posterHeaders = mapOf("user-agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
+            }
     }
     override suspend fun search(query: String): List<SearchResponse> {
         val queryformatted = query.replace(" ", "+")
         val url = "$mainUrl/?s=$queryformatted"
         val doc = app.get(url).document
-        return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").mapNotNull {
-it.toSearchResponse()
+        return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").mapNotNull {result ->
+result.toSearchResponse()
         }
     }
 
