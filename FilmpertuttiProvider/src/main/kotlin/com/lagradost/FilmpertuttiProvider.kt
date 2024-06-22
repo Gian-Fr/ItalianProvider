@@ -65,11 +65,11 @@ class FilmpertuttiProvider : MainAPI() {
         val title = this.selectFirst("h3 > a")?.text() ?: return null
         val link = this.selectFirst("a")?.attr("href") ?: return null
         val image = this.selectFirst("a > div > img")?.attr("src") ?: return null
-        val quality = getQualityFromString(title) ?: return null
+        val quality = getQualityFromString("HD") ?: return null
 
         return newMovieSearchResponse(title, link, TvType.Movie){
                 this.posterUrl = image
-            this.quality=quality
+                this.quality= quality
             }
     }
     override suspend fun search(query: String): List<SearchResponse> {
