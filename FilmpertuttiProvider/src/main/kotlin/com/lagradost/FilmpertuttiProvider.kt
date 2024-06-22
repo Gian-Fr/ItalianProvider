@@ -22,6 +22,8 @@ class FilmpertuttiProvider : MainAPI() {
         TvType.Movie,
         TvType.TvSeries
     )
+    private val userAgent =
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
     override var sequentialMainPage = true
     override var sequentialMainPageDelay: Long = 50
     override val mainPage = mainPageOf(
@@ -59,23 +61,23 @@ class FilmpertuttiProvider : MainAPI() {
         return newHomePageResponse(request.name, home)
     }
 
-    private fun Element.toSearchResponse(): MovieSearchResponse {
-        val title = this.text()
-        val link = this.selectFirst("a")!!.attr("href")
-        val image = this.selectFirst("a > div > img")!!.attr("src")
+    private fun Element.toSearchResponse(): SearchResponse? {
+        val title = this.selectFirst("h3 > a")?.text() ?: return null
+        val link = this.selectFirst("a")?.attr("href") ?: return null
+        val image = this.selectFirst("a > div > img")?.attr("src") ?: return null
 
-        return newMovieSearchResponse(
-            title,
-            link,
-            TvType.Movie){
+        return newMovieSearchResponse(title, link, TvType.Movie){
                 this.posterUrl = image
                 this.posterHeaders = mapOf("user-agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
             }
     }
     override suspend fun search(query: String): List<SearchResponse> {
-        val queryformatted = query.replace(" ", "+")
-        val url = "$mainUrl/?s=$queryformatted"
-        val doc = app.get(url).document
+        val encodedQuery = query.replace(" ", "+")
+        val searchUrl = "$mainUrl/?s=$encodedQuery"
+        val doc = app.get(
+            headers = mapOf("user-agent" to userAgent),
+            url = searchUrl
+        ).document
         return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").mapNotNull {result ->
 result.toSearchResponse()
         }
