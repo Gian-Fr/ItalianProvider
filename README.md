@@ -6,6 +6,7 @@ Supported Providers
 | GuardaSerie     | Tv Series | ✅      | ✅   |
 | AltaDefinizione | Movies    | ✅      | ✅   |
 | EuroStreaming   | Tv Series | ❌      | ❌   | temporarily deactivated
+| FilmPerTutti   | Tv Series / Movies | ✅      | ❌   | 
 
 ## Attribution
 
