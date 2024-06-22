@@ -65,17 +65,17 @@ class FilmpertuttiProvider : MainAPI() {
         val title = this.selectFirst("h3 > a")?.text() ?: return null
         val link = this.selectFirst("a")?.attr("href") ?: return null
         val image = this.selectFirst("a > div > img")?.attr("src") ?: return null
-        val quality  = null
+        var quality : SearchQuality? = null
 
         val qualityRegex = "\\s*\\[HD\\]\\s*".toRegex()
         val qualityFound = qualityRegex.containsMatchIn(title)
-         title.replace(qualityRegex,"").trim()
+        val cleanedTitle = title.replace(qualityRegex, "").trim()
 
-        if (qualityFound){
-            getQualityFromString("HD")
+        if (qualityFound) {
+            quality = getQualityFromString("HD")
         }
 
-        return newMovieSearchResponse(title, link, TvType.Movie){
+        return newMovieSearchResponse(cleanedTitle, link, TvType.Movie){
                 this.posterUrl = image
                 this.quality= quality
             }
