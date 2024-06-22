@@ -61,10 +61,10 @@ class FilmpertuttiProvider : MainAPI() {
         return newHomePageResponse(request.name, home)
     }
 
-    private fun Element.toSearchResponse(): SearchResponse? {
-        val title = this.selectFirst("h3 > a")?.text() ?: return null
-        val link = this.selectFirst("a")?.attr("href") ?: return null
-        val image = this.selectFirst("a > div > img")?.attr("src") ?: return null
+    private fun Element.toSearchResponse(): SearchResponse {
+        val title = this.selectFirst("h3 > a")!!.text()
+        val link = this.selectFirst("a")!!.attr("href")
+        val image = this.selectFirst("a > div > img")?.attr("src")
 
         return newMovieSearchResponse(title, link, TvType.Movie){
                 this.posterUrl = image
@@ -77,7 +77,7 @@ class FilmpertuttiProvider : MainAPI() {
             headers = mapOf("user-agent" to userAgent),
             url = searchUrl
         ).document
-        return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").mapNotNull {
+        return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").map {
             it.toSearchResponse()
         }
     }
