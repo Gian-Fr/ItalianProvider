@@ -68,7 +68,6 @@ class FilmpertuttiProvider : MainAPI() {
 
         return newMovieSearchResponse(title, link, TvType.Movie){
                 this.posterUrl = image
-                this.posterHeaders = mapOf("user-agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
             }
     }
     override suspend fun search(query: String): List<SearchResponse> {
@@ -78,8 +77,8 @@ class FilmpertuttiProvider : MainAPI() {
             headers = mapOf("user-agent" to userAgent),
             url = searchUrl
         ).document
-        return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").mapNotNull {result ->
-result.toSearchResponse()
+        return doc.select(".elementor-element.elementor-element-1abdb0d.elementor-grid-6.elementor-grid-tablet-4.elementor-grid-mobile-3.elementor-posts--thumbnail-top.elementor-widget.elementor-widget-archive-posts.animated.fadeIn > div > div >article").mapNotNull {
+            it.toSearchResponse()
         }
     }
 
