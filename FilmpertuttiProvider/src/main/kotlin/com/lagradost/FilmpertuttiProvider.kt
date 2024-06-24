@@ -95,24 +95,20 @@ class FilmpertuttiProvider : MainAPI() {
     override suspend fun load(url: String): LoadResponse {
         val document = app.get(url).document
         val type =
-            if (document.selectFirst("a.taxonomy.category")!!.attr("href").contains("serie-tv")
-                    .not()
-            ) TvType.Movie else TvType.TvSeries
-        val title = document.selectFirst("#content > h1")!!.text().substringBeforeLast("(")
-            .substringBeforeLast("[")
+            if (document.selectFirst("div > div.barra-tre-sezioni-nav > span.nav-item")?.text()
+                    ?.lowercase()
+                    .equals("episodi")
+            ) TvType.TvSeries else TvType.Movie
+        val titleRegex = Regex("(.*?)Streaming.*")
+        val title = titleRegex.replace(document.title(),"$1")
 
-        val descriptionindex = document.select("div.meta > div > div").indexOfFirst { it.getElementsContainingText("Trama").isNotEmpty() }
-        val description = document.select("div.meta > div > div")[descriptionindex +1].text()
+        val description = document.select(".synopsis-meta").text().replace("Leggi di meno","")
 
-        val rating = document.selectFirst("div.rating > div.value")?.text()
+        val rating = document.selectFirst("span.imdb-votes")?.ownText()?.replace("Voto ","")
 
-        val year =
-            document.selectFirst("#content > h1")?.text()?.substringAfterLast("(")
-                ?.filter { it.isDigit() }?.toIntOrNull()
-                ?: description.substringAfter("trasmessa nel").take(6).filter { it.isDigit() }
-                    .toIntOrNull() ?: (document.selectFirst("i.fa.fa-calendar.fa-fw")?.parent()
-                    ?.nextSibling() as Element?)?.text()?.substringAfterLast(" ")
-                    ?.filter { it.isDigit() }?.toIntOrNull()
+        val yearRegex = Regex("""\b\d{4}\b""")
+        val released = document.selectFirst("span.released")?.text().toString()
+        val year=yearRegex.find(released)?.value?.toIntOrNull()
 
         val horizontalPosterData = document.selectFirst("body > main")?.attr("style")?:""
         val poster =
@@ -128,30 +124,23 @@ class FilmpertuttiProvider : MainAPI() {
         if (type == TvType.TvSeries) {
 
             val episodeList = ArrayList<Episode>()
-            document.select("div.accordion-item").filter { a ->
-                a.selectFirst("#season > ul > li.s_title > span")!!.text().isNotEmpty()
-            }.map { element ->
-                val season =
-                    element.selectFirst("#season > ul > li.s_title > span")!!.text().toInt()
-                element.select("div.episode-wrap").map { episode ->
-                    val href =
-                        episode.select("#links > div > div > table > tbody:nth-child(2) > tr")
-                            .map { it.selectFirst("a")!!.attr("href") }.toJson()
-                    val epNum = episode.selectFirst("li.season-no")!!.text().substringAfter("x")
-                        .filter { it.isDigit() }.toIntOrNull()
-                    val epTitle = episode.selectFirst("li.other_link > a")?.text()
-
-                    val posterUrl = episode.selectFirst("figure > img")?.attr("data-src")
+            document.select(".episodi-lista").mapIndexed { index, stagione ->
+                val season = index + 1
+                stagione.select("li").map {episodio->
+                    val href = episodio.selectFirst("a")!!.attr("href")
+                    val epTitle= episodio.ownText()
+                    val epTitleWithoutNumber = epTitle.replaceFirst(Regex("""^\d+\.\s*"""), "").trim()
+                    val epNum= epTitle.substringBefore(". ").toIntOrNull()
+                    val posterUrl=episodio.selectFirst("img")?.attr("src")
                     episodeList.add(
                         Episode(
                             href,
-                            epTitle,
+                            epTitleWithoutNumber,
                             season,
                             epNum,
                             posterUrl,
                         )
-                    )
-                }
+                    )}
             }
             return newTvSeriesLoadResponse(
                 title,
