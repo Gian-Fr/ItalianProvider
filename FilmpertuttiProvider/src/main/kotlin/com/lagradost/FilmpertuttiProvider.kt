@@ -16,7 +16,7 @@ class FilmpertuttiProvider : MainAPI() {
     override var lang = "it"
     override var mainUrl = "https://filmpertutti.casino"
     override var name = "FilmPerTutti"
-    override val hasMainPage = true
+    override val hasMainPage = false
     override val hasChromecastSupport = true
     override val supportedTypes = setOf(
         TvType.Movie,
@@ -32,34 +32,6 @@ class FilmpertuttiProvider : MainAPI() {
         Pair("$mainUrl/prime-visioni/", "Ultime uscite")
     )
 
-    override suspend fun getMainPage(
-        page: Int,
-        request: MainPageRequest
-    ): HomePageResponse {
-        val url = request.data + page
-        val soup = app.get(url).document
-        val home = soup.select("ul.posts > li").map {
-            val title = it.selectFirst("div.title")!!.text().substringBeforeLast("(")
-                .substringBeforeLast("[")
-            val link = it.selectFirst("a")!!.attr("href")
-            val image = it.selectFirst("a")!!.attr("data-thumbnail")
-            val qualitydata = it.selectFirst("div.hd")
-            val quality = if (qualitydata != null) {
-                getQualityFromString(qualitydata.text())
-            } else {
-                null
-            }
-            newTvSeriesSearchResponse(
-                title,
-                link
-            ) {
-                this.posterUrl = image
-                this.quality = quality
-            }
-        }
-
-        return newHomePageResponse(request.name, home)
-    }
 
     private fun Element.toSearchResponse(): SearchResponse? {
         val title = this.selectFirst("h3 > a")?.text() ?: return null
@@ -129,13 +101,12 @@ class FilmpertuttiProvider : MainAPI() {
                 stagione.select("li").map {episodio->
                     val href = episodio.selectFirst("a")!!.attr("href")
                     val epTitle= episodio.ownText()
-                    val epTitleWithoutNumber = epTitle.replaceFirst(Regex("""^\d+\.\s*"""), "").trim()
                     val epNum= epTitle.substringBefore(". ").toIntOrNull()
                     val posterUrl=episodio.selectFirst("img")?.attr("src")
                     episodeList.add(
                         Episode(
                             href,
-                            epTitleWithoutNumber,
+                            epTitle,
                             season,
                             epNum,
                             posterUrl,
