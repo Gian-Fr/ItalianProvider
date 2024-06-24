@@ -100,7 +100,7 @@ class FilmpertuttiProvider : MainAPI() {
                 val season = index + 1
                 stagione.select("li").map {episodio->
                     val href = episodio.selectFirst("a")!!.attr("href")
-                    val epTitle= episodio.ownText()
+                    val epTitle= episodio.text()
                     val epNum= epTitle.substringBefore(". ").toIntOrNull()
                     val posterUrl=episodio.selectFirst("img")?.attr("src")
                     episodeList.add(
