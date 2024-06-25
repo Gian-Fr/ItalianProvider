@@ -8,6 +8,8 @@ Supported Providers
 | EuroStreaming   | Tv Series | ❌      | ❌   | temporarily deactivated
 | FilmPerTutti   | Tv Series / Movies | ✅      | ✅   |
 | SoraStreamItaliano   | Tv Series / Movies | ✅      | ✅   | some sources may not work
+| TantiFilm | Tv Series / Movies | ✅      | ❌   | 
+
 ## Attribution
 
 This template as well as the gradle plugin and the whole plugin system is **heavily** based on [Aliucord](https://github.com/Aliucord).
