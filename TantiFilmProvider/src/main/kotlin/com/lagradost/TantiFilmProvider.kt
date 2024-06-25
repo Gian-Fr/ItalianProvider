@@ -6,75 +6,55 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 import com.lagradost.cloudstream3.network.CloudflareKiller
 
+//TEST
+suspend fun main(){
+    val providerTester= com.lagradost.cloudstreamtest.ProviderTester(TantifilmProvider())
+    providerTester.testAll("Z Nation")
+}
 
 class TantifilmProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://https://www.tantifilm.baby"
+    override var mainUrl = "https://www.tantifilm.casa"
     override var name = "Tantifilm"
-    override val hasMainPage = true
+    override val hasMainPage = false
     override val hasChromecastSupport = true
     override val supportedTypes = setOf(
         TvType.Movie,
         TvType.TvSeries,
     )
-
-    override val mainPage = mainPageOf(
-        Pair("$mainUrl/watch-genre/al-cinema/page/", "Ultimi Film"),
-        Pair("$mainUrl/serie-tv/page/", "Ultime Serie Tv"),
-        Pair("$mainUrl/watch-genre/film-aggiornati/page/", "Ultimi Film Aggiornati"),
-    )
-
-    private val interceptor = CloudflareKiller()
-
-    override suspend fun getMainPage(
-        page: Int,
-        request: MainPageRequest
-    ): HomePageResponse {
-        val url = request.data + page
-        val soup = app.get(url, interceptor = interceptor).document
-        val home = soup.select("div.media3").map {
-            val title = it.selectFirst("p")!!.text().substringBefore("(")
-            val link = it.selectFirst("a")!!.attr("href")
-            val posterUrl = it.selectFirst("img")!!.attr("src")
-            TvSeriesSearchResponse(
-                title,
-                link,
-                this.name,
-                TvType.Movie,
-                posterUrl,
-                null,
-                null,
-                posterHeaders = interceptor.getCookieHeaders(url).toMap()
-            )
-        }
-        return newHomePageResponse(request.name, home)
-    }
+    private val userAgent =
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
 
     override suspend fun search(query: String): List<SearchResponse> {
-        val queryformatted = query.replace(" ", "+")
-        val url = "$mainUrl/?s=$queryformatted"
-
-        val doc = app.get(url, interceptor = interceptor).document
-        return doc.select("div.film.film-2").map {
+        val encodedQuery = query.replace(" ", "+")
+        val searchUrl = "$mainUrl/?s=$encodedQuery"
+        val doc = app.get(
+            headers = mapOf("user-agent" to userAgent),
+            url = searchUrl
+        ).document
+        return doc.select("article").map {
             val href = it.selectFirst("a")!!.attr("href")
             val poster = it.selectFirst("img")!!.attr("src")
-            val name = it.selectFirst("a > p")!!.text().substringBeforeLast("(")
-            MovieSearchResponse(
+            val name = it.selectFirst(".title > a")!!.text()
+            val type = if (it.select("span.tvshows").isNotEmpty()) {
+                TvType.TvSeries
+            } else {
+                TvType.Movie
+            }
+            newMovieSearchResponse(
                 name,
                 href,
-                this.name,
-                TvType.Movie,
-                poster,
-                null,
-                posterHeaders = interceptor.getCookieHeaders(url).toMap()
-            )
+                type,
+            ){
+                this.posterUrl=poster
+            }
 
         }
     }
 
     override suspend fun load(url: String): LoadResponse {
 
-        val document = app.get(url, interceptor = interceptor).document
+        val document = app.get(url).document
         val type = if (document.selectFirst("div.category-film")!!.text().contains("Serie")
                 .not()
         ) TvType.Movie else TvType.TvSeries
@@ -106,7 +86,6 @@ class TantifilmProvider : MainAPI() {
                 TvType.Movie,
                 poster,
                 null,
-                posterHeaders = interceptor.getCookieHeaders(url).toMap()
             )
 
         }
@@ -158,7 +137,6 @@ class TantifilmProvider : MainAPI() {
                 this.rating = rating
                 this.recommendations = recomm
                 addTrailer(trailerurl)
-                this.posterHeaders = interceptor.getCookieHeaders(url).toMap()
             }
         } else {
             val url2 = document.selectFirst("iframe")!!.attr("src")
@@ -219,7 +197,6 @@ class TantifilmProvider : MainAPI() {
                 this.tags = tags
                 this.duration = duratio
                 this.actors = actors
-                this.posterHeaders = interceptor.getCookieHeaders(url).toMap()
                 addTrailer(trailerurl)
 
             }
