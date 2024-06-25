@@ -4,6 +4,7 @@
     <button>Click to Install Extension!</button>
   </a>
 </p>
+
 Supported Providers
 | Provider        | Type      | Search | View | Notes |
 |-----------------|-----------|--------|------|-------|
