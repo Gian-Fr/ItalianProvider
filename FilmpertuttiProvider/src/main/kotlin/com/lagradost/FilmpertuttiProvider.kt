@@ -1,6 +1,7 @@
 package com.lagradost
 
 
+import android.util.Log
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addRating
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
@@ -12,7 +13,15 @@ import com.lagradost.cloudstream3.utils.loadExtractor
 import org.jsoup.nodes.Element
 
 
+//TEST
+suspend fun main(){
+    val providerTester= com.lagradost.cloudstreamtest.ProviderTester(FilmpertuttiProvider())
+    providerTester.testAll("Z Nation")
+}
+
+
 class FilmpertuttiProvider : MainAPI() {
+
     override var lang = "it"
     override var mainUrl = "https://filmpertutti.casino"
     override var name = "FilmPerTutti"
@@ -100,8 +109,8 @@ class FilmpertuttiProvider : MainAPI() {
                 val season = index + 1
                 stagione.select("li").map {episodio->
                     val href = episodio.selectFirst("a")!!.attr("href")
-                    val epTitle= episodio.text()
-                    val epNum= epTitle.substringBefore(". ").toIntOrNull()
+                    val epTitle= episodio.text().substringAfter(".").trim()
+                    val epNum= episodio.text().substringBefore(". ").substringAfter("►").toIntOrNull()
                     val posterUrl=episodio.selectFirst("img")?.attr("src")
                     episodeList.add(
                         Episode(
@@ -155,10 +164,20 @@ class FilmpertuttiProvider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        tryParseJson<List<String>>(data)?.apmap { id ->
-            val link = ShortLink.unshorten(id).trim().replace("/v/", "/e/").replace("/f/", "/e/")
-            loadExtractor(link, data, subtitleCallback, callback)
+        val page=app.get(data).document
+        val iframeUrl= page.selectFirst("iframe")!!.attr("src")
+        val iframe = app.get(iframeUrl).document
+        val links=iframe.select(".megaButton")
+        val linkList: List<String> = links.eachAttr("meta-link")
+
+        // Remove the first and last elements
+        val processedLinks: List<String> = if (linkList.size > 2) {
+            linkList.subList(1, linkList.size )
+        } else {
+            emptyList()
         }
+
+            loadExtractor(processedLinks.joinToString { "," }, data, subtitleCallback, callback)
         return true
     }
 }
