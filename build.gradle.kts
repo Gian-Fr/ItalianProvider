@@ -84,11 +84,26 @@ subprojects {
 
         //run JS
         implementation("org.mozilla:rhino:1.7.14")
-		    // Library/extensions searching with Levenshtein distance
-        implementation ("me.xdrop:fuzzywuzzy:1.4.0")
-    }
-}
+        // Library/extensions searching with Levenshtein distance
+        implementation("me.xdrop:fuzzywuzzy:1.4.0")
 
-task<Delete>("clean") {
-    delete(rootProject.buildDir)
+        //TEST
+        val apkTasks = listOf("deployWithAdb", "build")
+        val useApk = gradle.startParameter.taskNames.any { taskName ->
+            apkTasks.any { apkTask ->
+                taskName.contains(apkTask, ignoreCase = true)
+            }
+        }
+
+        // If the task is specifically to compile the app then use the stubs, otherwise us the library.
+        if (useApk) {
+            // Stubs for all Cloudstream classes
+            apk("com.lagradost:cloudstream3:pre-release")
+        } else {
+            // For running locally
+            implementation("com.github.Blatzar:CloudstreamApi:0.1.6")
+        }
+
+    }
+
 }
