@@ -35,11 +35,6 @@ class FilmpertuttiProvider : MainAPI() {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
     override var sequentialMainPage = true
     override var sequentialMainPageDelay: Long = 50
-    override val mainPage = mainPageOf(
-        Pair("$mainUrl/category/film/", "Film Popolari"),
-        Pair("$mainUrl/category/serie-tv/", "Serie Tv Popolari"),
-        Pair("$mainUrl/prime-visioni/", "Ultime uscite")
-    )
 
 
     private fun Element.toSearchResponse(): SearchResponse? {
