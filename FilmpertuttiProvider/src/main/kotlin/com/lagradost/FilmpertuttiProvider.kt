@@ -177,7 +177,9 @@ class FilmpertuttiProvider : MainAPI() {
             emptyList()
         }
 
-            loadExtractor(processedLinks.joinToString { "," }, data, subtitleCallback, callback)
+        processedLinks.forEach{
+            loadExtractor(it,data,subtitleCallback,callback)
+        }
         return true
     }
 }
