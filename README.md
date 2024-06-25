@@ -1,5 +1,9 @@
 # Cloudstream Italian Provider
-
+<p>
+  <a href="cloudstreamrepo://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/repo.json">
+    <button>Click to Install Extension!</button>
+  </a>
+</p>
 Supported Providers
 | Provider        | Type      | Search | View | Notes |
 |-----------------|-----------|--------|------|-------|
