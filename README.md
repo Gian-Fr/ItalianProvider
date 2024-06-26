@@ -6,7 +6,7 @@
 | GuardaSerie     | Tv Series | ✅      | ✅   |
 | AltaDefinizione | Movies    | ✅      | ✅   |
 | EuroStreaming   | Tv Series | ❌      | ❌   | temporarily deactivated
-| FilmPerTutti   | Tv Series / Movies | ✅      | ✅   |
+| FilmPerTutti   | Tv Series / Movies | ✅      | ✅   | some episodes name are wrong
 | SoraStreamItaliano   | Tv Series / Movies | ✅      | ✅   | some sources may not work
 | TantiFilm | Tv Series / Movies | ✅      | ❌   | 
 
