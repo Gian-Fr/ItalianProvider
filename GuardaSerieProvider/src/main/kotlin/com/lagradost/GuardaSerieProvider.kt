@@ -5,12 +5,16 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addRating
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+suspend fun main(){
+    val providerTester= com.lagradost.cloudstreamtest.ProviderTester(GuardaSerieProvider())
+    providerTester.testAll("Fear the walking dead")
+}
 
 class GuardaSerieProvider : MainAPI() {
     override var lang = "it"
     override var mainUrl = "https://guardaserie.ceo"
     override var name = "GuardaSerie"
-    override val hasMainPage = true
+    override val hasMainPage = false
     override val hasChromecastSupport = true
     override var sequentialMainPage = true
     private val userAgent =
@@ -18,36 +22,7 @@ class GuardaSerieProvider : MainAPI() {
     override val supportedTypes = setOf(
         TvType.TvSeries,
     )
-    override val mainPage = mainPageOf(
-        Pair("$mainUrl/serietv-popolari/page/", "Serie Tv Popolari"),
-        Pair("$mainUrl/serietv-streaming/", "Ultime Serie Tv"),
-        Pair("$mainUrl/top-imdb/", "Top IMDB")
-    )
 
-
-    override suspend fun getMainPage(
-        page: Int,
-        request: MainPageRequest
-    ): HomePageResponse {
-        val url = request.data + page
-        val soup = app.get(url).document
-        val home = soup.select("div.mlnew").drop(1).map { series ->
-            val title = series.selectFirst("div.mlnh-2")!!.text()
-            val link = series.selectFirst("div.mlnh-2 > h2 > a")!!.attr("href")
-            val posterUrl = fixUrl(series.selectFirst("img")!!.attr("src")).replace("/60x85-0-85/", "/400x600-0-85/")
-
-            newTvSeriesSearchResponse(
-                title,
-                link,
-                TvType.TvSeries
-            ) {
-                this.posterUrl = posterUrl
-                this.posterHeaders = mapOf("user-agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
-            }
-
-        }
-        return newHomePageResponse(request.name, home)
-    }
 
     override suspend fun search(query: String): List<SearchResponse> {
         val encodedQuery = query.replace(" ", "+")
@@ -85,8 +60,11 @@ class GuardaSerieProvider : MainAPI() {
         val episodeList = document.select("div.tab-content > div").mapIndexed { season, data ->
             data.select("li").mapIndexed { epNum, epData ->
                 val epName = epData.selectFirst("a")?.attr("data-title")
-                val data = epData.select("div.mirrors > a").map { it.attr("data-link") }
-                    .joinToString ( "," )
+                val data = epData.select("div.mirrors > a")
+                    .map { it.attr("data-link") }
+                    .filter { !it.contains("#") }
+                    .joinToString(",")
+
                 Episode(
                     data = data,
                     name = epName,
@@ -106,7 +84,6 @@ class GuardaSerieProvider : MainAPI() {
             this.plot = description
             this.year = year
             this.posterUrl = poster
-            this.posterHeaders = mapOf("user-agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
         }
     }
 
@@ -117,9 +94,16 @@ class GuardaSerieProvider : MainAPI() {
         callback: (ExtractorLink) -> Unit
     ): Boolean {
         val links = data.split(",")
-        links.map { url ->
-            loadExtractor(fixUrl(url), fixUrl(url), subtitleCallback, callback)
+
+        //until supervideoExtractor url is not updated in the library this is needed
+        val updatedLinks = links.map { url ->
+            url.replace("supervideo.cc", "supervideo.tv")
         }
+
+        updatedLinks.forEach { url ->
+            loadExtractor(url,data, subtitleCallback, callback)
+        }
+
         return true
     }
 }
