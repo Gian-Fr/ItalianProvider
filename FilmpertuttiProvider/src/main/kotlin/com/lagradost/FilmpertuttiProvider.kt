@@ -86,11 +86,23 @@ class FilmpertuttiProvider : MainAPI() {
         val released = document.selectFirst("span.released")?.text().toString()
         val year=yearRegex.find(released)?.value?.toIntOrNull()
 
-        val horizontalPosterData = document.selectFirst("body > main")?.attr("style")?:""
-        val poster =
-            Regex("url\\('(.*)'").find(horizontalPosterData)?.groups?.lastOrNull()?.value?:
-            document.selectFirst("div.meta > div > img")?.attr("src")
+        // Select all elements with a style attribute
+        val styles = document.select("style")
+        // Regular expression to match the background-image URL
+        val regex = "background-image:\\s*url\\(['\"]([^'\"]+)['\"]\\)".toRegex()
 
+        var poster: String? =null
+         outer@ for (styleElement in styles) {
+            val styleContent = styleElement.html()
+            val matchResults = regex.findAll(styleContent)
+
+            for (matchResult in matchResults) {
+                val imageUrl = matchResult.groupValues[1]
+                if (imageUrl.contains("https://image.tmdb.org/t/p/w1920_and_h800_multi_faces")) {
+                poster=imageUrl
+                break@outer}
+            }
+        }
 
         val trailerurl =
             document.selectFirst("div.youtube-player")?.attr("data-id")?.let { urldata ->
@@ -143,12 +155,11 @@ class FilmpertuttiProvider : MainAPI() {
                 type,
                 urls
             ) {
-                posterUrl = fixUrlNull(poster)
+                this.posterUrl = fixUrlNull(poster)
                 this.year = year
                 this.plot = description
                 addRating(rating)
                 addTrailer(trailerurl)
-
             }
         }
     }
