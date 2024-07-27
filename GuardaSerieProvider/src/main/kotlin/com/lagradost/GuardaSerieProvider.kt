@@ -2,6 +2,7 @@ package com.lagradost
 
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addRating
+import com.lagradost.cloudstream3.network.CloudflareKiller
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
@@ -12,7 +13,7 @@ suspend fun main(){
 
 class GuardaSerieProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://guardaserie.ceo"
+    override var mainUrl = "https://guardaserie.food"
     override var name = "GuardaSerie"
     override val hasMainPage = false
     override val hasChromecastSupport = true
@@ -22,6 +23,8 @@ class GuardaSerieProvider : MainAPI() {
     override val supportedTypes = setOf(
         TvType.TvSeries,
     )
+    private val interceptor = CloudflareKiller()
+
 
 
     override suspend fun search(query: String): List<SearchResponse> {
@@ -29,7 +32,7 @@ class GuardaSerieProvider : MainAPI() {
         val searchUrl = "$mainUrl/?story=$encodedQuery&do=search&subaction=search"
         val doc = app.get(
             headers = mapOf("user-agent" to userAgent),
-           url = searchUrl
+           url = searchUrl, interceptor = interceptor
         ).document
         return doc.select("div.mlnew").drop(1).map { series ->
             val title = series.selectFirst("div.mlnh-2")!!.text()
