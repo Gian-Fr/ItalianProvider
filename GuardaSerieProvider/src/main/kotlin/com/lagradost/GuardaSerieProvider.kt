@@ -23,7 +23,6 @@ class GuardaSerieProvider : MainAPI() {
     override val supportedTypes = setOf(
         TvType.TvSeries,
     )
-    private val interceptor = CloudflareKiller()
 
 
 
@@ -32,7 +31,7 @@ class GuardaSerieProvider : MainAPI() {
         val searchUrl = "$mainUrl/?story=$encodedQuery&do=search&subaction=search"
         val doc = app.get(
             headers = mapOf("user-agent" to userAgent),
-           url = searchUrl, interceptor = interceptor
+           url = searchUrl
         ).document
         return doc.select("div.mlnew").drop(1).map { series ->
             val title = series.selectFirst("div.mlnh-2")!!.text()
