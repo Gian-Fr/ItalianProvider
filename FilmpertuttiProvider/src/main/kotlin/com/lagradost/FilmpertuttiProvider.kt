@@ -14,11 +14,6 @@ import org.jsoup.nodes.Element
 
 
 //TEST
-suspend fun main(){
-    val providerTester= com.lagradost.cloudstreamtest.ProviderTester(FilmpertuttiProvider())
-    providerTester.testAll("Z Nation")
-}
-
 
 class FilmpertuttiProvider : MainAPI() {
 
