@@ -12,28 +12,14 @@ import org.jsoup.nodes.Element
 
 class AltadefinizioneProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://altadefinizione.vodka"
+    override var mainUrl = "https://altadefinizione.gripe"
     override var name = "Altadefinizione"
-    override val hasMainPage = true
+    override val hasMainPage = false
     override val hasChromecastSupport = true
     override val supportedTypes = setOf(
         TvType.Movie
     )
 
-    override val mainPage = mainPageOf(
-        Pair("$mainUrl/cerca/anno/2024/", "Ultimi Film"),
-        Pair("$mainUrl/cerca/openload-quality/HD/page/", "Film in HD"),
-        Pair("$mainUrl/cinema/", "Ora al cinema")
-    )
-
-    override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
-        val url = request.data + page
-        val soup = app.get(url).document
-        val home = soup.select("div.box").mapNotNull {
-            it.toSearchResult()
-        }
-        return newHomePageResponse(arrayListOf(HomePageList(request.name, home)), hasNext = true)
-    }
 
     private fun Element.toSearchResult(): SearchResponse? {
         val title = this.selectFirst("img")?.attr("alt") ?: return null
