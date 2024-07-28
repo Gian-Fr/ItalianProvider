@@ -9,4 +9,4 @@ include(
     "GuardaSerieProvider",
     "TantiFilmProvider",
     "SoraItalianStream",
-    "EuroStreamingProvider",)
+)
