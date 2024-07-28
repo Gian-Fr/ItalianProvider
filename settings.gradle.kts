@@ -5,5 +5,8 @@ rootProject.name = "CloudstreamPlugins"
 
 // Plugins are included like this
 include(
-    "ExampleProvider"
-)
+    "ExampleProvider",
+    "GuardaSerieProvider",
+    "TantiFilmProvider",
+    "SoraItalianStream",
+    "EuroStreamingProvider",)
