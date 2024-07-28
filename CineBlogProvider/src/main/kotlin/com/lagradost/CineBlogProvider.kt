@@ -9,9 +9,9 @@ import com.lagradost.cloudstream3.network.CloudflareKiller
 
 class CineBlogProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://cb01.church"
+    override var mainUrl = "https://cb01.exchange"
     override var name = "CB01"
-    override val hasMainPage = true
+    override val hasMainPage = false
     override val hasChromecastSupport = true
     override val supportedTypes = setOf(
         TvType.Movie,
@@ -20,13 +20,6 @@ class CineBlogProvider : MainAPI() {
 
     val interceptor = CloudflareKiller()
 
-    override val mainPage = mainPageOf(
-        Pair("$mainUrl/popolari/page/number/?get=movies", "Film Popolari"),
-        Pair("$mainUrl/popolari/page/number/?get=tv", "Serie Tv Popolari"),
-        Pair("$mainUrl/i-piu-votati/page/number/?get=movies", "Film più votati"),
-        Pair("$mainUrl/i-piu-votati/page/number/?get=tv", "Serie Tv più votate"),
-        Pair("$mainUrl/anno/2022/page/number", "Ultime uscite"),
-    )
 
     override suspend fun getMainPage(
         page: Int, request: MainPageRequest
