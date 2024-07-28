@@ -11,7 +11,9 @@ val disabled = listOf<String>(
     "AnimeWorldProvider",
     "AnimeSaturnProvider",
     "CalcioStreamingProvider",
-    "AltaDefinizioneProvider"
+    "AltaDefinizioneProvider",
+    "CasaCinemaProvider",
+    "FilmpertuttiProvider"
 )
 
 File(rootDir, ".").eachDir { dir ->
