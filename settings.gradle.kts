@@ -11,7 +11,7 @@ include(
     "CasaCinemaProvider",
     "CalcioStreamingProvider",
     "IptvorgProvider",
-    "AnimeWorldProvider",
+//    "AnimeWorldProvider" DISABLED,
     "AnimeSaturnProvider",
     "AniPlayProvider",
     "CineBlogProvider",
