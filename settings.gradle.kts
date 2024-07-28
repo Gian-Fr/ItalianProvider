@@ -7,6 +7,20 @@ rootProject.name = "CloudstreamPlugins"
 include(
     "ExampleProvider",
     "TantiFilmProvider",
-    "GuardaSerieProvider",
+    "FilmpertuttiProvider",
+    "CasaCinemaProvider",
+    "CalcioStreamingProvider",
+    "IptvorgProvider",
+    "AnimeWorldProvider",
+    "AnimeSaturnProvider",
+    "AniPlayProvider",
+    "CineBlogProvider",
+    "FreeTVProvider",
+    "IlGenioDelloStreamingProvider",
+//    "EurostreamingProvider", DISABLED
+//    "GuardaSerieProvider", CLOUDFLARE
     "SoraItalianStream",
+    "AltadefinizioneProvider",
+    "TvItalianaProvider",
+    "StreamingcommunityProvider"
 )
