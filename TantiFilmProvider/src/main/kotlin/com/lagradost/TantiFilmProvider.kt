@@ -6,12 +6,6 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 import com.lagradost.cloudstream3.network.CloudflareKiller
 
-//TEST
-suspend fun main(){
-    val providerTester= com.lagradost.cloudstreamtest.ProviderTester(TantifilmProvider())
-    providerTester.testAll("Z Nation")
-}
-
 class TantifilmProvider : MainAPI() {
     override var lang = "it"
     override var mainUrl = "https://www.tantifilm.casa"

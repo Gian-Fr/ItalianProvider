@@ -6,7 +6,6 @@ import com.lagradost.cloudstream3.network.CloudflareKiller
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
-suspend fun main(){
 class GuardaSerieProvider : MainAPI() {
     override var lang = "it"
     override var mainUrl = "https://guardaserie.food"
@@ -19,6 +18,7 @@ class GuardaSerieProvider : MainAPI() {
     override val supportedTypes = setOf(
         TvType.TvSeries,
     )
+    private val interceptor= CloudflareKiller()
 
 
 
@@ -27,7 +27,7 @@ class GuardaSerieProvider : MainAPI() {
         val searchUrl = "$mainUrl/?story=$encodedQuery&do=search&subaction=search"
         val doc = app.get(
             headers = mapOf("user-agent" to userAgent),
-           url = searchUrl
+           url = searchUrl, interceptor = interceptor
         ).document
         return doc.select("div.mlnew").drop(1).map { series ->
             val title = series.selectFirst("div.mlnh-2")!!.text()
