@@ -6,7 +6,9 @@ rootProject.name = "CloudstreamPlugins"
 // Plugins are included like this
 val disabled = listOf<String>(
    "EurostreamingProvider",
-    "CineBlogProvider"
+    "CineBlogProvider",
+    "AniPlayProvider",
+    "AnimeWorldProvider"
 )
 
 File(rootDir, ".").eachDir { dir ->
