@@ -7,8 +7,46 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 import com.lagradost.cloudstream3.utils.*
 import com.lagradost.cloudstream3.*
 import org.json.JSONObject
+import org.jsoup.nodes.Element
 import java.security.MessageDigest
+import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 
+data class PropsGson(
+    val titles: List<TitleGson>
+)
+
+data class FullResponseGson(
+    val props: PropsGson
+)
+data class ImageGson(
+    @SerializedName("imageable_id") val imageableId: Int,
+    @SerializedName("imageable_type") val imageableType: String,
+    val filename: String,
+    val type: String,
+    @SerializedName("original_url_field") val originalUrlField: String? = null
+)
+
+data class TitleGson(
+    val id: Int,
+    val slug: String,
+    val name: String,
+    val type: String,
+    val score: String,
+    @SerializedName("sub_ita") val subIta: Int,
+    @SerializedName("last_air_date") val lastAirDate: String? = null,
+    @SerializedName("seasons_count") val seasonsCount: Int,
+    val images: List<ImageGson>
+)
+
+data class ResponseDataGson(
+    val titles: List<TitleGson>
+)
+
+suspend fun main() {
+    val providerTester = com.lagradost.cloudstreamtest.ProviderTester(StreamingcommunityProvider())
+    providerTester.testSearch("fear the")
+}
 class StreamingcommunityProvider : MainAPI() {
     override var lang = "it"
     override var mainUrl = "https://streamingcommunity.photos"
@@ -22,20 +60,30 @@ class StreamingcommunityProvider : MainAPI() {
     private val userAgent =
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
 
+
+    private fun TitleGson.toSearchResult(): SearchResponse {
+        val title= this.name
+        val link= "$mainUrl/titles/${this.id}-${this.slug}"
+        val cdnprefix= mainUrl.replace("streamingcommunity","cdn.streamingcommunity")
+        val posterUrl="${cdnprefix}/images/${this.images[0].filename}"
+        return newMovieSearchResponse(title, link, TvType.Movie) {
+            addPoster(posterUrl)
+        }
+    }
+
     override suspend fun search(query: String): List<SearchResponse> {
-        mainUrl = app.get(mainUrl, headers = mapOf("user-agent" to userAgent)).url
         val queryFormatted = query.replace(" ", "%20")
         val url = "$mainUrl/search?q=$queryFormatted"
         val document = app.get(url, headers = mapOf("user-agent" to userAgent)).document
-
-        val films =
-            document.selectFirst("the-search-page")!!.attr("records-json")
-                .replace("&quot;", """"""")
-
-        val searchResults = parseJson<List<VideoElement>>(films)
-        return searchResults.apmap { result ->
-            result.toSearchResponse()
+        val results= document.select("#app").attr("data-page")
+        val gson = Gson()
+        val fullResponse = gson.fromJson(results, FullResponseGson::class.java)
+        val titles = fullResponse.props.titles
+        val searchResults = mutableListOf<SearchResponse>()
+        for( title in titles){
+            searchResults.add(title.toSearchResult())
         }
+        return searchResults
     }
 
     override suspend fun load(url: String): LoadResponse {

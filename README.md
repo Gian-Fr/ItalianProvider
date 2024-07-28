@@ -1,14 +1,15 @@
 # Cloudstream Italian Provider
 
 ## Supported Providers
-| Provider        | Type      | Search | View | Notes |
-|-----------------|-----------|--------|------|-------|
-| GuardaSerie     | Tv Series | ✅      | ✅   | ⚠️ Deactivated due to Cloudflare Enabled ⚠️
-| AltaDefinizione | Movies    | ✅      | ✅   |
-| EuroStreaming   | Tv Series | ❌      | ❌   | temporarily deactivated
-| FilmPerTutti   | Tv Series / Movies | ✅      | ✅   | some episodes name are wrong
-| SoraStreamItaliano   | Tv Series / Movies | ✅      | ✅   | some sources may not work
-| TantiFilm | Tv Series / Movies | ✅      | ❌   | 
+| Provider           | Type      | Search | View | Notes |
+|--------------------|-----------|--------|----|-------|
+| GuardaSerie        | Tv Series | ✅      | ✅ | ⚠️ Deactivated due to Cloudflare Enabled ⚠️
+| AltaDefinizione    | Movies    | ✅      | ✅ |
+| EuroStreaming      | Tv Series | ❌      | ❌ | temporarily deactivated
+| FilmPerTutti       | Tv Series / Movies | ✅      | ✅ | some episodes name are wrong
+| SoraStreamItaliano | Tv Series / Movies | ✅      | ✅ | some sources may not work
+| TantiFilm          | Tv Series / Movies | ✅      | ❌ |
+| StreamingCommunity | Tv Series / Movies | ✅      |  ❌ |
 
 ## How to install
 Open this link and cloudstream should install the extension
