@@ -11,9 +11,9 @@ import java.security.MessageDigest
 
 class StreamingcommunityProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://streamingcommunity.expert"
+    override var mainUrl = "https://streamingcommunity.photos"
     override var name = "StreamingCommunity"
-    override val hasMainPage = true
+    override val hasMainPage = false
     override val hasChromecastSupport = true
     override val supportedTypes = setOf(
         TvType.Movie,
@@ -21,22 +21,6 @@ class StreamingcommunityProvider : MainAPI() {
     )
     private val userAgent =
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
-
-    override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
-        val webpage = app.get(mainUrl, headers = mapOf("user-agent" to userAgent))
-        val document = webpage.document
-        mainUrl = webpage.url
-        val items = document.select("slider-title").subList(0, 3).map {
-            val films = it.attr("titles-json")
-            val videoData = parseJson<List<VideoElement>>(films)
-            val searchResponses = videoData.subList(0, 12).apmap { searchr ->
-                searchr.toSearchResponse()
-            }
-            HomePageList(it.attr("slider-name"), searchResponses)
-        }
-        if (items.isEmpty()) throw ErrorLoadingException()
-        return HomePageResponse(items)
-    }
 
     override suspend fun search(query: String): List<SearchResponse> {
         mainUrl = app.get(mainUrl, headers = mapOf("user-agent" to userAgent)).url
