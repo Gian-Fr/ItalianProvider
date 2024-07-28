@@ -24,3 +24,9 @@ cloudstream {
 
     iconUrl = "https://www.google.com/s2/favicons?domain=filmpertutti.casino&sz=%size%"
 }
+
+android {
+    buildFeatures {
+        viewBinding = true
+    }
+}
