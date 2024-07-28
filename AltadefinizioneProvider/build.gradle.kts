@@ -1,6 +1,7 @@
 // use an integer for version numbers
 version = 1
 
+
 cloudstream {
     language = "it"
     // All of these properties are optional, you can safely remove them
@@ -17,13 +18,8 @@ cloudstream {
      * */
     status = 1 // will be 3 if unspecified
     tvTypes = listOf(
-        "TvSeries"
+        "Movie",
     )
 
-<<<<<<<< HEAD:EurostreamingProvider/build.gradle.kts
-
-    iconUrl = "https://www.google.com/s2/favicons?domain=eurostreaming.money&sz=%size%"
-========
-    iconUrl = "https://www.google.com/s2/favicons?domain=starlive.xyz&sz=%size%"
->>>>>>>> parent of cc4d0aa (Disabled other providers for test):StarLiveProvider/build.gradle.kts
+    iconUrl = "https://www.google.com/s2/favicons?domain=altadefinizione.vodka&sz=%size%"
 }
