@@ -7,10 +7,6 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
 suspend fun main(){
-    val providerTester= com.lagradost.cloudstreamtest.ProviderTester(GuardaSerieProvider())
-    providerTester.testAll("Fear the walking dead")
-}
-
 class GuardaSerieProvider : MainAPI() {
     override var lang = "it"
     override var mainUrl = "https://guardaserie.food"
