@@ -71,9 +71,6 @@ subprojects {
         val apk by configurations
         val implementation by configurations
 
-        // Stubs for all Cloudstream classes
-        apk("com.lagradost:cloudstream3:pre-release")
-
         // these dependencies can include any of those which are added by the app,
         // but you dont need to include any of them if you dont need them
         // https://github.com/recloudstream/cloudstream/blob/master/app/build.gradle
@@ -82,22 +79,12 @@ subprojects {
         implementation("org.jsoup:jsoup:1.16.2") // html parser
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.0")
         implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")
-
-
-        val apkTasks = listOf("deployWithAdb", "build")
-        val useApk = gradle.startParameter.taskNames.any { taskName ->
-            apkTasks.any { apkTask ->
-                taskName.contains(apkTask, ignoreCase = true)
-            }
-        }
-        // If the task is specifically to compile the app then use the stubs, otherwise us the library.
-        if (useApk) {
+        
             // Stubs for all Cloudstream classes
             apk("com.lagradost:cloudstream3:pre-release")
-        } else {
-            // For running locally
+
             implementation("com.github.Blatzar:CloudstreamApi:0.1.6")
-        }
+
     }
 }
 
