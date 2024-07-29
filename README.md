@@ -3,7 +3,7 @@
 ## Supported Providers
 | Provider           | Type      | Search | View | Notes |
 |--------------------|-----------|--------|----|-------|
-| GuardaSerie        | Tv Series | ✅      | ✅ | ⚠️ Deactivated due to Cloudflare Enabled ⚠️
+| GuardaSerie        | Tv Series | ✅      | ✅ | ⚠️ Cloudflare Enabled ⚠️
 | AltaDefinizione    | Movies    | ✅      | ✅ |
 | EuroStreaming      | Tv Series | ❌      | ❌ | temporarily deactivated
 | FilmPerTutti       | Tv Series / Movies | ✅      | ✅ | some episodes name are wrong
