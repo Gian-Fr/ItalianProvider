@@ -18,7 +18,7 @@ include(
     "FreeTVProvider",
     "IlGenioDelloStreamingProvider",
 //    "EurostreamingProvider", DISABLED
-//    "GuardaSerieProvider", CLOUDFLARE
+    "GuardaSerieProvider",
     "SoraItalianStream",
     "AltadefinizioneProvider",
     "TvItalianaProvider",

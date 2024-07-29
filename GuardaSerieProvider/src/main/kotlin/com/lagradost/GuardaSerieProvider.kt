@@ -46,7 +46,10 @@ class GuardaSerieProvider : MainAPI() {
     }
 
     override suspend fun load(url: String): LoadResponse {
-        val document = app.get(url).document
+        val document = app.get(
+            headers = mapOf("user-agent" to userAgent),
+            url = url, interceptor = interceptor
+        ).document
         val title = document.selectFirst("h1")!!.text().removeSuffix(" streaming")
         val description = document.selectFirst("div.tv_info_right")?.textNodes()?.joinToString("")?.removeSuffix("!")?.trim()
         val rating = document.selectFirst("span.post-ratings")?.text()
