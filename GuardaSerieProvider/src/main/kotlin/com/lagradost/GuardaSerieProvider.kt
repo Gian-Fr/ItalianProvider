@@ -85,6 +85,7 @@ class GuardaSerieProvider : MainAPI() {
             this.plot = description
             this.year = year
             this.posterUrl = poster
+            this.posterHeaders = interceptor.getCookieHeaders(mainUrl).toMap()
         }
     }
 
