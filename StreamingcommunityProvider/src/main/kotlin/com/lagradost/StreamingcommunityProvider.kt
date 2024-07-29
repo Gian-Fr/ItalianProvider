@@ -43,10 +43,6 @@ data class ResponseDataGson(
     val titles: List<TitleGson>
 )
 
-suspend fun main() {
-    val providerTester = com.lagradost.cloudstreamtest.ProviderTester(StreamingcommunityProvider())
-    providerTester.testSearch("fear the")
-}
 class StreamingcommunityProvider : MainAPI() {
     override var lang = "it"
     override var mainUrl = "https://streamingcommunity.photos"
