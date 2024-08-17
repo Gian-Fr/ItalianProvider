@@ -19,14 +19,8 @@ class CasaCinemaProvider : MainAPI() { // all providers must be an instance of M
     override val supportedTypes = setOf(TvType.Movie, TvType.TvSeries)
     override val hasChromecastSupport = true
     override var lang = "it"
-    override val hasMainPage = true
+    override val hasMainPage = false
     private val interceptor = CloudflareKiller()
-
-    override val mainPage =
-        mainPageOf(
-            "$mainUrl/category/serie-tv/page/" to "Ultime Serie Tv",
-            "$mainUrl/category/film/page/" to "Ultimi Film",
-        )
 
     private fun fixTitle(element: Element?): String {
         return element?.text()
@@ -43,15 +37,6 @@ class CasaCinemaProvider : MainAPI() { // all providers must be an instance of M
             .contains("\\(\\d{4}\\)".toRegex())
     }
 
-    override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
-
-        val url = request.data + page
-
-        val soup = app.get(url, referer = mainUrl).document
-        val home = soup.select("ul.posts>li").mapNotNull { it.toSearchResult() }
-        val hasNext = soup.select("div.navigation>ul>li>a").last()?.text() == "Pagina successiva »"
-        return newHomePageResponse(arrayListOf(HomePageList(request.name, home)), hasNext = hasNext)
-    }
 
 
     override suspend fun search(query: String): List<SearchResponse> {

@@ -19,7 +19,7 @@ class IlGenioDelloStreamingProvider : MainAPI() {
     override var lang = "it"
     override var mainUrl = "https://ilgeniodellostreaming.food"
     override var name = "IlGenioDelloStreaming"
-    override val hasMainPage = true
+    override val hasMainPage = false
     override val hasChromecastSupport = true
     override var sequentialMainPage = true
     override val supportedTypes =
@@ -43,39 +43,6 @@ class IlGenioDelloStreamingProvider : MainAPI() {
             ?: "No Title found"
     }
 
-    override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
-        val url = request.data + page
-
-        val soup = app.get(url, referer = mainUrl).document
-        val home = soup.select("div.items > article.item").mapNotNull { it.toMainPageResult() }
-        val hasNext = home.isNotEmpty()
-        return newHomePageResponse(arrayListOf(HomePageList(request.name, home)), hasNext = hasNext)
-    }
-
-    private fun Element.toMainPageResult(): SearchResponse {
-        val title =
-            fixTitle(this.selectFirst("div.data>h3"))
-        val isMovie =
-            (this.selectFirst("div.data>h3")?.text() ?: "").contains("\\(\\d{4}\\)".toRegex())
-        val link =
-            this.selectFirst("div.poster>a")?.attr("href")
-                ?: throw ErrorLoadingException("No Link found")
-
-        val quality = this.selectFirst("div.poster>span.quality")?.text()
-        val posterUrl = this.selectFirst("div.poster>a>img")?.attr("src")
-
-        return if (isMovie) {
-            newMovieSearchResponse(title, link, TvType.Movie) {
-                addPoster(posterUrl)
-                quality?.let { addQuality(it) }
-            }
-        } else {
-            newTvSeriesSearchResponse(title, link, TvType.TvSeries) {
-                addPoster(posterUrl)
-                quality?.let { addQuality(it) }
-            }
-        }
-    }
 
     override suspend fun search(query: String): List<SearchResponse> {
         val queryFormatted = query.replace(" ", "+")

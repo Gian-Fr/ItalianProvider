@@ -21,16 +21,6 @@ class CineBlogProvider : MainAPI() {
     val interceptor = CloudflareKiller()
 
 
-    override suspend fun getMainPage(
-        page: Int, request: MainPageRequest
-    ): HomePageResponse {
-        val url = request.data.replace("number", page.toString())
-        val soup = app.get(url, referer = url.substringBefore("page")).document
-        val home = soup.select("article.item").mapNotNull {
-            it.toSearchResult()
-        }
-        return newHomePageResponse(arrayListOf(HomePageList(request.name, home)), hasNext = true)
-    }
 
     private fun Element.toSearchResult(): SearchResponse {
         val title =

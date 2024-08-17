@@ -13,7 +13,7 @@ class EurostreamingProvider : MainAPI() {
     override var lang = "it"
     override var mainUrl = "https://eurostreaming.money"
     override var name = "Eurostreaming"
-    override val hasMainPage = true
+    override val hasMainPage = false
     override val hasChromecastSupport = true
     private val interceptor = CloudflareKiller()
     override val supportedTypes = setOf(
@@ -38,16 +38,6 @@ class EurostreamingProvider : MainAPI() {
         "$mainUrl/serie-tv-archive/page/" to "Ultime serie Tv",
         "$mainUrl/animazione/page/" to "Ultime serie Animazione",
         )
-
-    override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
-        val url = request.data + page
-
-        val soup = app.get(url).document
-        val home = soup.select("div.post-thumb").mapNotNull {
-            it.toSearchResult()
-        }
-        return newHomePageResponse(arrayListOf(HomePageList(request.name, home)), hasNext = true)
-    }
 
     private fun Element.toSearchResult(): SearchResponse? {
         val title = this.selectFirst("a")?.attr("title") ?: return null
