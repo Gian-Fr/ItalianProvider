@@ -97,12 +97,7 @@ class GuardaSerieProvider : MainAPI() {
     ): Boolean {
         val links = data.split(",")
 
-        //until supervideoExtractor url is not updated in the library this is needed
-        val updatedLinks = links.map { url ->
-            url.replace("supervideo.cc", "supervideo.tv")
-        }
-
-        updatedLinks.forEach { url ->
+        links.forEach { url ->
             loadExtractor(url,data, subtitleCallback, callback)
         }
 
