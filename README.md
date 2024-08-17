@@ -1,5 +1,7 @@
 # Cloudstream Italian Provider
 
+## HomePage
+ Homepage is provided by SoraStreamItaliano
 ## Supported Providers
 | Provider           | Type      | Search | View | Notes |
 |--------------------|-----------|--------|----|-------|
@@ -12,8 +14,9 @@
 | StreamingCommunity | Tv Series / Movies | ✅      |  ❌ |
 
 ## How to install
-Open this link and cloudstream should install the extension
-
+Click on install in the following page
+https://cloudstream-on-fleek-co.ipns.dweb.link/repos/
+if it doesn't work open this link and cloudstream should install the extension
 cloudstreamrepo://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/repo.json
 
 
