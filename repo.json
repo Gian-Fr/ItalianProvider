@@ -3,6 +3,6 @@
     "description": "Cloudstream Italian Plugin Repository",
     "manifestVersion": 1,
     "pluginLists": [
-      "https://raw.githubusercontent.com/Gmstars/ItalianProvider/builds/plugins.json"
+      "https://raw.githubusercontent.com/Gmstars/ItalianProvider/refs/heads/builds/plugins.json"
     ]
 }
