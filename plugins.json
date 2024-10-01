@@ -60,7 +60,7 @@
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=calciostreaming.live&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Gian-Fr/ItalianProvider",
+        "repositoryUrl": "https://github.com/Gmstars/ItalianProvider",
         "fileSize": 8764,
         "status": 1,
         "language": "it",
@@ -73,7 +73,7 @@
         ],
         "version": 1,
         "internalName": "CalcioStreamingProvider",
-        "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/CalcioStreamingProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Gmstars/ItalianProvider/builds/CalcioStreamingProvider.cs3",
         "name": "CalcioStreamingProvider"
     },
     {
