@@ -52,7 +52,7 @@ fun getImageUrl(mainUrl: String,url: String): String {
 }
 class StreamingcommunityProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://streamingcommunity.buzz"
+    override var mainUrl = "https://streamingcommunity.computer"
     override var name = "StreamingCommunity"
     override val hasMainPage = false
     override val hasChromecastSupport = true
