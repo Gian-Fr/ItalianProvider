@@ -8,11 +8,11 @@ import com.lagradost.cloudstream3.utils.loadExtractor
 
 class GuardaSerieProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://guardaserie.food"
+    override var mainUrl = "https://guardaserie.tips"
     override var name = "GuardaSerie"
     override val hasMainPage = false
     override val hasChromecastSupport = true
-    override var sequentialMainPage = true
+    override var sequentialMainPage = false
     private val userAgent =
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
     override val supportedTypes = setOf(
