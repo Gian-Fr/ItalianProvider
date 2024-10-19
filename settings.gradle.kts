@@ -16,7 +16,7 @@ include(
     "AniPlayProvider",
 //    "CineBlogProvider" NOT WORKING,
     "FreeTVProvider",
-    "IlGenioDelloStreamingProvider",
+   // "IlGenioDelloStreamingProvider",
 //    "EurostreamingProvider", DISABLED
     "GuardaSerieProvider",
     "SoraItalianStream",
