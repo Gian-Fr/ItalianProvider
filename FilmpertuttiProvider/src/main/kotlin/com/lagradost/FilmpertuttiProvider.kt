@@ -18,7 +18,7 @@ import org.jsoup.nodes.Element
 class FilmpertuttiProvider : MainAPI() {
 
     override var lang = "it"
-    override var mainUrl = "https://filmpertutti.casino"
+    override var mainUrl = "https://filmpertutti.app"
     override var name = "FilmPerTutti"
     override val hasMainPage = false
     override val hasChromecastSupport = true
