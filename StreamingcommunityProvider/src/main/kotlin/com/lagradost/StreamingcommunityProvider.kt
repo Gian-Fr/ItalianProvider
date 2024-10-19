@@ -1,15 +1,9 @@
 package com.lagradost
 
-import android.text.Html
 import android.util.Log
 import com.fasterxml.jackson.annotation.*
-import com.lagradost.cloudstream3.utils.AppUtils.parseJson
-import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 import com.lagradost.cloudstream3.utils.*
 import com.lagradost.cloudstream3.*
-import org.json.JSONObject
-import org.jsoup.nodes.Element
-import java.security.MessageDigest
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
@@ -130,7 +124,7 @@ data class LoadedSeason(
     )
     data class Props(
         val title: Title,
-        val loadedSeason: LoadedSeason
+        val loadedSeason: LoadedSeason,
     )
 
     data class Response(
@@ -174,9 +168,11 @@ data class LoadedSeason(
                 seasons.map { season ->
                     val seasonDocument = app.get(url+"/stagione-"+season.number.toString(), headers = mapOf("user-agent" to userAgent)).document
                     val resultJson = seasonDocument.select("#app").attr("data-page")
-                    val response = gson.fromJson(resultJson, Response::class.java)
-                    for (episode in response.props.loadedSeason.episodes) {
-                        val href = mainUrl+"/watch/"+response.props.title.id
+                    val episodeResponse = gson.fromJson(resultJson, Response::class.java)
+                    var episode_id=response.props.loadedSeason.episodes[0].id
+                    for (episode in episodeResponse.props.loadedSeason.episodes) {
+                        val href = mainUrl+"/watch/"+response.props.title.id+"?episode_id="+episode_id
+                        Log.d("JSONLOG", "EMBED$href")
                         val postImage = getImageUrl(mainUrl, episode.images.firstOrNull()!!.filename)
                         episodesList.add(newEpisode(href) {
                             this.name = episode.name
@@ -185,7 +181,7 @@ data class LoadedSeason(
                             this.description = episode.plot
                             this.posterUrl = postImage
                         })
-
+episode_id++
                     }
                 }
                 return newTvSeriesLoadResponse(name,mainUrl,TvType.TvSeries,episodesList){
