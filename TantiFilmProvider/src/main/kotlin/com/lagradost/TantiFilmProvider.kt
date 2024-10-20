@@ -1,10 +1,10 @@
 package com.lagradost
 
+import android.util.Log
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
-import com.lagradost.cloudstream3.network.CloudflareKiller
 
 class TantifilmProvider : MainAPI() {
     override var lang = "it"
@@ -49,76 +49,48 @@ class TantifilmProvider : MainAPI() {
     override suspend fun load(url: String): LoadResponse {
 
         val document = app.get(url).document
-        val type = if (document.selectFirst("div.category-film")!!.text().contains("Serie")
-                .not()
-        ) TvType.Movie else TvType.TvSeries
-        val title = document.selectFirst("div.title-film-left")!!.text().substringBefore("(")
-        val descipt = document.select("div.content-left-film > p").map { it.text() }
-        val rating =
-            document.selectFirst("div.star-rating.star-rating-f > span > span")!!
-                .attr("data-rateit-value").toFloatOrNull()
-                ?.times(2857)?.toInt()?.let { minOf(it, 10000) }
+       val title = document.selectFirst(".data>h1")!!.text()
+        val description = document.select(".wp-content>p").text()
+        var year = document.selectFirst(".date")!!.text().substringAfter(",").substring(1).toInt()
 
-        var year = document.selectFirst("div.title-film-left")!!.text().substringAfter("(")
-            .filter { it.isDigit() }
-        year = if (year.length > 4) {
-            year.dropLast(4)
-        } else {
-            year
+        val poster = document.selectFirst("img")!!.attr("src")
+
+//        val recomm = document.select("div.mediaWrap.mediaWrapAlt.recomended_videos").map {
+//            val href = it.selectFirst("a")!!.attr("href")
+//            val poster = it.selectFirst("img")!!.attr("src")
+//            val name = it.selectFirst("a > p")!!.text().substringBeforeLast("(")
+//            MovieSearchResponse(
+//                name,
+//                href,
+//                this.name,
+//                TvType.Movie,
+//                poster,
+//                null,
+//            )
+//
+//        }
+
+//        val trailerurl = document.selectFirst("#trailer_mob > iframe")!!.attr("src")
+
+        val type=
+            if(document.select(".single_tabs>ul>li").first()!!.text().equals("Episodi")){
+            TvType.TvSeries
         }
-        // ?: does not wor
-        val poster = document.selectFirst("div.image-right-film > img")!!.attr("src")
-
-        val recomm = document.select("div.mediaWrap.mediaWrapAlt.recomended_videos").map {
-            val href = it.selectFirst("a")!!.attr("href")
-            val poster = it.selectFirst("img")!!.attr("src")
-            val name = it.selectFirst("a > p")!!.text().substringBeforeLast("(")
-            MovieSearchResponse(
-                name,
-                href,
-                this.name,
-                TvType.Movie,
-                poster,
-                null,
-            )
-
+        else{
+            TvType.Movie
         }
-
-        val trailerurl = document.selectFirst("#trailer_mob > iframe")!!.attr("src")
-
         if (type == TvType.TvSeries) {
-            val list = ArrayList<Pair<Int, String>>()
-            val urlvideocontainer = document.selectFirst("iframe")!!.attr("src")
-            val videocontainer = app.get(urlvideocontainer).document
-            videocontainer.select("nav.nav1 > select > option").forEach { element ->
-                val season = element.text().toIntOrNull()
-                val href = element.attr("value")
-                if (season != null && season > 0 && !href.isNullOrBlank()) {
-                    list.add(Pair(season, fixUrl(href)))
-                }
-            }
-            if (list.isEmpty()) throw ErrorLoadingException("No Seasons Found")
-
             val episodeList = ArrayList<Episode>()
-
-            for ((season, seasonurl) in list) {
-                val seasonDocument = app.get(seasonurl).document
-                val episodes = seasonDocument.select("nav.second_nav > select > option")
-                if (episodes.isNotEmpty()) {
-                    episodes.forEach { episode ->
-                        val href = episode.attr("value")
-                        val epNum = episode.text().toIntOrNull()
-                        episodeList.add(
-                            Episode(
-                                href,
-                                title,
-                                season,
-                                epNum,
-                            )
-                        )
-                    }
+            document.select("#seasons>.se-c").forEach { element ->
+                val season = element.selectFirst(".se-t")!!.text().toInt()
+                val href = element.attr("value")
+                element.select(".episodios > li").forEach{episodio ->
+                    Log.d("JSONLOG","EPISODIO "+episodio.select("a").attr("href"))
+                    episodeList.add(Episode(episodio.select("a").attr("href"),episodio.select("a").text(),season))
                 }
             }
+            if (episodeList.isEmpty()) throw ErrorLoadingException("No Seasons Found")
+
             return newTvSeriesLoadResponse(
                 title,
                 url,
@@ -126,11 +98,11 @@ class TantifilmProvider : MainAPI() {
                 episodeList
             ) {
                 this.posterUrl = fixUrlNull(poster)
-                this.year = year.toIntOrNull()
-                this.plot = descipt[0]
+                this.year = year
+//                this.plot = description[0]
                 this.rating = rating
-                this.recommendations = recomm
-                addTrailer(trailerurl)
+//                this.recommendations = recomm
+//                addTrailer(trailerurl)
             }
         } else {
             val url2 = document.selectFirst("iframe")!!.attr("src")
@@ -162,21 +134,21 @@ class TantifilmProvider : MainAPI() {
             }
 
 
-            val duratio: Int? = if (descipt.size == 2) {
-                descipt[0].filter { it.isDigit() }.toInt()
-            } else {
-                null
-            }
-            val tags: List<String>? = if (descipt.size == 2) {
-                mutableListOf(descipt[0].substringBefore(" "))
-            } else {
-                null
-            }
-            val plot: String = if (descipt.size == 2) {
-                descipt[1]
-            } else {
-                descipt[0]
-            }
+//            val duratio: Int? = if (description.size == 2) {
+//                description[0].filter { it.isDigit() }.toInt()
+//            } else {
+//                null
+//            }
+//            val tags: List<String>? = if (description.size == 2) {
+//                mutableListOf(description[0].substringBefore(" "))
+//            } else {
+//                null
+//            }
+//            val plot: String = if (description.size == 2) {
+//                description[1]
+//            } else {
+//                description[0]
+//            }
             return newMovieLoadResponse(
                 title,
                 url2,
@@ -184,14 +156,14 @@ class TantifilmProvider : MainAPI() {
                 url2
             ) {
                 posterUrl = fixUrlNull(poster)
-                this.year = year.toIntOrNull()
+                this.year = year
                 this.plot = plot
                 this.rating = rating
-                this.recommendations = recomm
+//                this.recommendations = recomm
                 this.tags = tags
-                this.duration = duratio
+//                this.duration = duratio
                 this.actors = actors
-                addTrailer(trailerurl)
+//                addTrailer(trailerurl)
 
             }
         }
@@ -203,14 +175,12 @@ class TantifilmProvider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
+        Log.d("JSONLOG",data
+        )
         val doc = app.get(data).document
-        val iframe =
-            doc.select("option").map { it.attr("value") }.filter { it.contains("label") }
-        iframe.forEach { id ->
-            val doc2 = app.get(id).document
-            val id2 = app.get(doc2.selectFirst("iframe")!!.attr("src")).url
-            loadExtractor(id2, data, subtitleCallback, callback)
-        }
+        val video = doc.selectFirst("video")!!.attr("src")
+        Log.d("JSONLOG",video)
+            loadExtractor(video, data, subtitleCallback, callback)
         return true
     }
 }
