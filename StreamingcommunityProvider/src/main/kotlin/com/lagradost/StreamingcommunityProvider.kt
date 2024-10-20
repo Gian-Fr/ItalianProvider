@@ -139,14 +139,15 @@ data class LoadedSeason(
 
 
     override suspend fun load(url: String): LoadResponse? {
-        Log.d("JSONLOG", url)
+//        Log.d("JSONLOG", url)
         val document = app.get(url, headers = mapOf("user-agent" to userAgent)).document
         val resultJson = document.select("#app").attr("data-page")
         val response = gson.fromJson(resultJson, Response::class.java)
-        Log.d("JSONLOG","ID: "+response.props.title.id.toString() )
-        val result = when (response.props.title.type) {
+        val plot= response.props.title.plot
+        val poster=getImageUrl(mainUrl, response.props.title.images[3].filename)
+
+        when (response.props.title.type) {
             "movie" -> {
-                val poster=getImageUrl(mainUrl,response.props.title.images.firstOrNull()!!.filename)
                 return newMovieLoadResponse(
                     response.props.title.name,
                     mainUrl+"/watch/"+response.props.title.id,
@@ -154,7 +155,7 @@ data class LoadedSeason(
                     mainUrl+"/watch/"+response.props.title.id
                 ) {
                     posterUrl = poster
-                    this.plot = response.props.title.plot
+                    this.plot =plot
                     this.year= response.props.title.release_date.substringBefore("-").toInt()
 
                 }
@@ -165,14 +166,13 @@ data class LoadedSeason(
                 val episodesList = mutableListOf<Episode>()
 
                 val seasons = response.props.title.seasons
+                var episode_id=response.props.loadedSeason.episodes[0].id
                 seasons.map { season ->
                     val seasonDocument = app.get(url+"/stagione-"+season.number.toString(), headers = mapOf("user-agent" to userAgent)).document
                     val resultJson = seasonDocument.select("#app").attr("data-page")
                     val episodeResponse = gson.fromJson(resultJson, Response::class.java)
-                    var episode_id=response.props.loadedSeason.episodes[0].id
                     for (episode in episodeResponse.props.loadedSeason.episodes) {
                         val href = mainUrl+"/watch/"+response.props.title.id+"?episode_id="+episode_id
-                        Log.d("JSONLOG", "EMBED$href")
                         val postImage = getImageUrl(mainUrl, episode.images.firstOrNull()!!.filename)
                         episodesList.add(newEpisode(href) {
                             this.name = episode.name
@@ -185,6 +185,8 @@ episode_id++
                     }
                 }
                 return newTvSeriesLoadResponse(name,mainUrl,TvType.TvSeries,episodesList){
+                    this.posterUrl=poster
+                    this.plot =plot
                 }
             }
 
@@ -192,7 +194,6 @@ episode_id++
                 return null
             }
         }
-        return result
      }
 
 
@@ -204,17 +205,17 @@ episode_id++
         callback: (ExtractorLink) -> Unit
     ): Boolean {
         val dataLink= data.replace("watch","iframe")
-        Log.d("JSONLOG","LINK ORIGINALE "+dataLink)
+//        Log.d("JSONLOG","LINK ORIGINALE "+dataLink)
         val links= app.get(dataLink).document.select("iframe").attr("src")
-        Log.d("JSONLOG","LINK IFRAME "+links)
+//        Log.d("JSONLOG","LINK IFRAME "+links)
         val regex = "[\"']https.*?[\"']".toRegex()
         val vixUrl= app.get(links).document.select("script")[4]
         val vixUrls=regex.findAll(vixUrl.toString()).map { it.value }.toList()
-            Log.d("JSONLOG","link extratto: "+vixUrls[2].substring(1,vixUrls[2].length-1,))
+//            Log.d("JSONLOG","link extratto: "+vixUrls[2].substring(1,vixUrls[2].length-1,))
         val urlnoexpire=(vixUrls[2].substring(1,vixUrls[2].length-1))
         val expire = (System.currentTimeMillis() / 1000 + 172800).toString()
         val finalUrl= urlnoexpire+"&expires="+expire
-        Log.d("JSONLOG","urlfinale "+finalUrl)
+//        Log.d("JSONLOG","urlfinale "+finalUrl)
         callback.invoke(
             ExtractorLink(
                 name,
