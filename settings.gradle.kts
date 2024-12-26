@@ -8,7 +8,7 @@ include(
     //"TantiFilmProvider", NOT WORKING
     "FilmpertuttiProvider",
 //    "CasaCinemaProvider" NOT WORKING,
-    "CalcioStreamingProvider",
+//    "CalcioStreamingProvider", FIXED IN doGiorsHadEnough REPO
     "IptvorgProvider",
 //    "AnimeWorldProvider" DISABLED,
     "AnimeSaturnProvider",
