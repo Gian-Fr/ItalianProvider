@@ -11,7 +11,7 @@ include(
 //    "CalcioStreamingProvider", FIXED IN doGiorsHadEnough REPO
     "IptvorgProvider",
 //    "AnimeWorldProvider" DISABLED,
-    "AnimeSaturnProvider",
+//    "AnimeSaturnProvider", DISABLED
     "AniPlayProvider",
 //    "CineBlogProvider" NOT WORKING,
     "FreeTVProvider",
