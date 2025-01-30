@@ -21,5 +21,5 @@ include(
     "SoraItalianStream",
     "AltadefinizioneProvider",
     "TvItalianaProvider",
-    "StreamingcommunityProvider"
+    //"StreamingcommunityProvider" NOT WORKING
 )
