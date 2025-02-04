@@ -4,14 +4,14 @@
  Homepage is provided by SoraStreamItaliano
 ## Supported Providers
 | Provider           | Type      | Search | View | Notes |
-|--------------------|-----------|--------|----|-------|
-| GuardaSerie        | Tv Series | ✅      | ✅ |
-| AltaDefinizione    | Movies    | ✅      | ✅ |
-| StreamingCommunity | Tv Series / Movies | ✅      |  ✅ |
-| FilmPerTutti       | Tv Series / Movies | ✅      | ✅ | some episodes name are wrong
-| SoraStreamItaliano | Tv Series / Movies | ✅      | ✅ | some sources may not work - Only movies work
-| EuroStreaming      | Tv Series | ❌      | ❌ | temporarily deactivated
-| TantiFilm          | Tv Series / Movies | ✅      | ❌ | temporarily deactivated
+|--------------------|-----------|-------|----|-------|
+| GuardaSerie        | Tv Series | ✅     | ✅ |
+| AltaDefinizione    | Movies    | ✅     | ✅ |
+| SoraStreamItaliano | Tv Series / Movies | ✅     | ✅ | some sources may not work - Only movies work
+| FilmPerTutti       | Tv Series / Movies | ❌     | ❌ | temporarily deactivated
+| StreamingCommunity | Tv Series / Movies | ❌      |  ❌  | temporarily deactivated
+| EuroStreaming      | Tv Series | ❌     | ❌ | temporarily deactivated
+| TantiFilm          | Tv Series / Movies | ✅     | ❌ | temporarily deactivated
 ## How to install
 Click on install in the following page
 https://cloudstream-on-fleek-co.ipns.dweb.link/repos/
