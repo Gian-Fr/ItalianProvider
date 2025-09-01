@@ -6,13 +6,12 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addRating
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
-import okhttp3.FormBody
 import org.jsoup.nodes.Element
 
 
 class AltadefinizioneProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://altadefinizione.gripe"
+    override var mainUrl = "https://altadefinizionegratis.center/"
     override var name = "Altadefinizione"
     override val hasMainPage = false
     override val hasChromecastSupport = true
@@ -33,18 +32,11 @@ class AltadefinizioneProvider : MainAPI() {
     }
 
     override suspend fun search(query: String): List<SearchResponse> {
-        val body = FormBody.Builder()
-            .addEncoded("do", "search")
-            .addEncoded("subaction", "search")
-            .addEncoded("story", query)
-            .addEncoded("sortby", "news_read")
-            .build()
-            
-        val doc = app.post(
-            "$mainUrl/index.php",
-            requestBody = body
-        ).document
 
+        val searchUrl = "$mainUrl?do=search&subaction=search&story=$query"
+        val doc = app.get(
+            searchUrl
+        ).document
         return doc.select("div.box").mapNotNull {
             it.toSearchResult()
         }
