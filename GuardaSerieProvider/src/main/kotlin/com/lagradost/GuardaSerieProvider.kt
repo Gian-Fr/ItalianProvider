@@ -8,7 +8,7 @@ import com.lagradost.cloudstream3.utils.loadExtractor
 
 class GuardaSerieProvider : MainAPI() {
     override var lang = "it"
-    override var mainUrl = "https://guardaserie.tips"
+    override var mainUrl = "https://guardaserietv.sale/"
     override var name = "GuardaSerie"
     override val hasMainPage = false
     override val hasChromecastSupport = true
@@ -33,10 +33,10 @@ class GuardaSerieProvider : MainAPI() {
             val title = series.selectFirst("div.mlnh-2")!!.text()
             val link = series.selectFirst("div.mlnh-2 > h2 > a")!!.attr("href")
             val posterUrl = fixUrl(series.selectFirst("img")!!.attr("src")).replace("/60x85-0-85/", "/400x600-0-85/")
-            newMovieSearchResponse(
+            newTvSeriesSearchResponse(
                 title,
                 link,
-                TvType.Movie
+                TvType.TvSeries
             ) {
                 this.posterUrl = posterUrl
                 this.posterHeaders = interceptor.getCookieHeaders(mainUrl).toMap()
@@ -58,22 +58,25 @@ class GuardaSerieProvider : MainAPI() {
             fixUrl( it )
         }?: fixUrl(document.selectFirst("#cover")!!.attr("src"))
 
-        val episodeList = document.select("div.tab-content > div").mapIndexed { season, data ->
+        val episodeList = document.select("div.tab-content > div").flatMapIndexed { season, data ->
             data.select("li").mapIndexed { epNum, epData ->
-                val epName = epData.selectFirst("a")?.attr("data-title")
+                val description = epData.selectFirst("a")?.attr("data-title")
                 val data = epData.select("div.mirrors > a")
                     .map { it.attr("data-link") }
                     .filter { !it.contains("#") }
                     .joinToString(",")
 
-                Episode(
+                newEpisode(
                     data = data,
-                    name = epName,
-                    season = season + 1,
-                    episode = epNum + 1,
-                )
+                ) {
+                    this.description = description
+                    this.season = season + 1
+                    this.episode = epNum + 1
+                }
             }
-        }.flatten()
+        }
+
+
 
         return newTvSeriesLoadResponse(
             title,

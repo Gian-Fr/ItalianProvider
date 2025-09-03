@@ -23,3 +23,10 @@ cloudstream {
 
     iconUrl = "https://www.google.com/s2/favicons?domain=guardaserie.ceo&sz=%size%"
 }
+
+android {
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
+}
